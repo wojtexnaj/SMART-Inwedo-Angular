@@ -1,0 +1,50 @@
+@import '../assets/index.scss';
+.container-fluid{
+  .row{
+    .navigation{
+      position: absolute;
+      left: -200px;
+      width: 200px;
+      animation: off .5s linear;
+      .navigation-switch{
+        position: absolute;
+        right: -30px;
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        transition: all .5s linear;
+        &:hover{
+          background-color: $blue-color;
+          color: #ffffff;
+        }
+      }
+      &.navigation-on{
+        left: 0px;
+        animation: on .5s linear;
+      }
+    }
+  }
+}
+@keyframes on {
+  0%{
+    left: -200px;
+  }
+  50%{
+    left: -100px
+  }
+  100%{
+    left: 0px;
+  }
+}
+@keyframes off {
+  0%{
+    left: 0px;
+  }
+  50%{
+    left: -100px
+  }
+  100%{
+    left: -200px;
+  }
+}
