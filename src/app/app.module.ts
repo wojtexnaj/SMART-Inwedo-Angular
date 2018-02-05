@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 // Import all components from list
 import { AppComponentList } from './app.component-list';
 
-
 @NgModule({
   declarations: [
     AppComponent,
