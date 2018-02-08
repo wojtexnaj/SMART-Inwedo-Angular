@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="navigation" [ngClass]="{'navigation-on': isNavigation}">
       <div class="navigation-switch d-flex justify-content-center align-items-center" (click)="switchNavigation()">
@@ -9,6 +9,8 @@
       </div>
       <navigation></navigation>
     </div>
-    <div class="main"></div>
+    <div class="main">
+      <httpComponent></httpComponent>
+    </div>
   </div>
 </div>

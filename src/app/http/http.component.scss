@@ -1,0 +1,56 @@
+@import '../../assets/index.scss';
+.container-fluid{
+  .row{
+    h2{
+      font-size: 1.5rem;
+    }
+    .weather-box{
+      box-shadow: 3px 0px 5px 2px $blue-color;
+      padding: 10px;
+      opacity: 0.8;
+      transition: all 0.5s linear;
+      &:hover{
+        box-shadow: 2px -2px 10px 2px $blue-color;
+        opacity: 1;
+      }
+      .temp{
+        white-space: nowrap;
+        font-size: 30px;
+        font-weight: 700;
+        width: 100%;
+        text-align: center;
+        &.cold{
+          color: #0000ff
+        }
+        &.cool{
+          color: #add8e6
+        }
+        &.warm{
+          color: #ffff00
+        }
+        &.hot{
+          color: #ff0000
+        }
+      }
+      .description{
+        text-align: center;
+      }
+    }
+    .no-city{
+      font-size: 20px;
+      white-space: nowrap;
+    }
+  }
+}
+@media (min-width: 576px) {
+  .container-fluid{
+    .row{
+      h2{
+        font-size: 2rem;
+      }
+      .no-city{
+        font-size: 30px;
+      }
+    }
+ }
+}

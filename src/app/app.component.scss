@@ -1,12 +1,15 @@
 @import '../assets/index.scss';
-.container-fluid{
+.container{
   .row{
     .navigation{
       position: absolute;
+      background-color: #ffffff;
+      z-index: 100;
       left: -200px;
       width: 200px;
       animation: off .5s linear;
       .navigation-switch{
+        background-color: #ffffff;
         position: absolute;
         right: -30px;
         text-align: center;
@@ -24,8 +27,12 @@
         animation: on .5s linear;
       }
     }
+    .main{
+      width: 100%;
+    }
   }
 }
+
 @keyframes on {
   0%{
     left: -200px;

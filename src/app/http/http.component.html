@@ -1,3 +1,36 @@
-<p>
-  http works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <div>
+        <h2>Weather in your city.</h2>
+      </div>
+      <input class="form-control" [(ngModel)]="cityName" placeholder="Enter the city name.">
+      <button (click)="showWeather()">Show weather</button>
+    </div>
+    <div class="col-6">
+      <div class="text-center">
+        <h2>Weather</h2>
+      </div>
+      <div *ngIf="cityNames.length > 0">
+        <div *ngFor="let cityName of cityNames" class="weather-box mb-4 d-flex flex-md-row flex-column justify-content-between">
+            <div class="d-flex justify-content-center align-items-center w-100">
+              <div>
+                <div class="temp" [ngClass]="{'cold': cityName.temp <= 0, 'cool': cityName.temp > 0 && cityName.temp <= 15, 'warm': cityName.temp > 15 && cityName.temp < 25, 'hot': cityName.temp >= 25}">{{cityName.temp}} &deg; C</div>
+                <div class="description">{{cityName.description}}</div>
+              </div>
+            </div>
+            <div>
+                <div><img src="http://openweathermap.org/img/w/{{cityName.icon}}.png"></div>
+                <div>{{cityName.name}}</div>
+                <div>Country: {{cityName.country}}</div>
+                <div>Position:<br> latitude - {{cityName.position.latitude}} longitude - {{cityName.position.longitude}}</div>
+            </div>
+          </div>
+      </div>
+      <div *ngIf="cityNames.length == 0" class="no-city d-flex justify-content-center align-items-center">
+        <div>No city was found.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
