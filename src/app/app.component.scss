@@ -5,9 +5,9 @@
       position: absolute;
       background-color: #ffffff;
       z-index: 100;
-      left: -200px;
       width: 200px;
-      animation: off .5s linear;
+      left: -200px;
+      transition: all 0.5s linear;
       .navigation-switch{
         background-color: #ffffff;
         position: absolute;
@@ -24,34 +24,11 @@
       }
       &.navigation-on{
         left: 0px;
-        animation: on .5s linear;
+        transition: all 0.5s linear;
       }
     }
     .main{
       width: 100%;
     }
-  }
-}
-
-@keyframes on {
-  0%{
-    left: -200px;
-  }
-  50%{
-    left: -100px
-  }
-  100%{
-    left: 0px;
-  }
-}
-@keyframes off {
-  0%{
-    left: 0px;
-  }
-  50%{
-    left: -100px
-  }
-  100%{
-    left: -200px;
   }
 }
