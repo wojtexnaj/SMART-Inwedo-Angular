@@ -63,4 +63,8 @@ export class HttpComponent implements OnInit {
   savesSearchInPreviousSearch() {
     this.previousSearch = this.cityName;
   }
+
+  clearInput() {
+    this.cityName = '';
+  }
 }

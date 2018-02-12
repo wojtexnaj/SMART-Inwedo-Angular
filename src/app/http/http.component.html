@@ -5,7 +5,10 @@
         <div>
           <h2 class="mb-2">Weather in your city</h2>
         </div>
-        <input class="form-control" [(ngModel)]="cityName" placeholder="Enter the city name." (focus)="cleanCityName()" [ngClass]="{ 'error': cityName == cityNotFound || cityName == justYouSearchedForIt }">
+        <div class="d-flex justify-content-start align-items-center">
+          <input class="form-control mr-2" [(ngModel)]="cityName" placeholder="Enter the city name." (focus)="cleanCityName()" [ngClass]="{ 'error': cityName == cityNotFound || cityName == justYouSearchedForIt }">
+          <i class="fa fa-times text-secondary" *ngIf="cityName.length > 0" (click)="clearInput()"></i>
+        </div>
         <button class="mt-2 btn btn-outline-secondary" (click)="showWeather()" [disabled]="cityName.length == 0 || cityName == cityNotFound || cityName == justYouSearchedForIt">Search city</button>
       </div>
     </div>
