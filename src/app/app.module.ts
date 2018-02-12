@@ -12,6 +12,9 @@ import { AppComponentList } from './app.component-list';
 // Services
 import { WeatherService } from './services/index';
 
+// Routing
+import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,8 @@ import { WeatherService } from './services/index';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [
     // Services
