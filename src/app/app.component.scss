@@ -1,11 +1,13 @@
 @import '../assets/index.scss';
 .container{
+  margin-top: 30px;
   .row{
     .navigation{
       position: absolute;
       background-color: #ffffff;
       z-index: 100;
       width: 200px;
+      top: 164px;
       left: -200px;
       transition: all 0.5s linear;
       .navigation-switch{

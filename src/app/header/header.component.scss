@@ -1,0 +1,13 @@
+@import '../../assets/index.scss';
+.container-fluid{
+  border-bottom: 4px solid $red-color;
+  background-color: $blue-color;
+  .row{
+    height: 160px;
+    .title{
+      color: #ffffff;
+      font-size: 45px;
+      text-shadow: 2px 2px 2px $red-color;
+    }
+  }
+}
