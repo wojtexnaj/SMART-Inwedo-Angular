@@ -1,9 +1,9 @@
 import { NavigationComponent } from '../app/navigation/navigation.component';
-import { HttpComponent } from './http/http.component';
+import { HttpWeatherComponent } from './http/http-weather/http-weather.component';
 import { HeaderComponent } from './header/header.component';
 
 export const AppComponentList = [
   NavigationComponent,
-  HttpComponent,
+  HttpWeatherComponent,
   HeaderComponent
 ];

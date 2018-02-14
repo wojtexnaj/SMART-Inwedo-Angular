@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpComponent } from './http/http.component';
+import { HttpWeatherComponent } from './http/http-weather/http-weather.component';
 
 const routes: Routes = [
-  { path: 'http-weather', component: HttpComponent, pathMatch: 'full' }
+  { path: 'http-weather', component: HttpWeatherComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

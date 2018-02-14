@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { WeatherService } from '../services/index';
-import { CityWeather } from '../models';
+import { WeatherService } from '../../services/index';
+import { CityWeather } from '../../models';
 import { Response } from '@angular/http';
 
 @Component({
-  selector: 'httpComponent',
-  templateUrl: './http.component.html',
-  styleUrls: ['./http.component.scss']
+  selector: 'http-weather',
+  templateUrl: './http-weather.component.html',
+  styleUrls: ['./http-weather.component.scss']
 })
-export class HttpComponent implements OnInit {
+export class HttpWeatherComponent implements OnInit {
   cityName: string = '';
   cityNames: CityWeather[] = [];
   cityNotFound: string = 'City not found';
