@@ -12,9 +12,11 @@ import { Response } from '@angular/http';
 export class HttpWeatherComponent implements OnInit {
   cityName: string = '';
   cityNames: CityWeather[] = [];
-  cityNotFound: string = 'City not found';
-  justYouSearchedForIt: string = 'Just you searched for it';
+  cityNotFound: string = 'City not found.';
+  justYouSearchedForIt: string = 'You just searched for it.';
   previousSearch: string = '';
+
+  loading: boolean = false;
 
   constructor(
     private weatherservice: WeatherService
@@ -24,12 +26,15 @@ export class HttpWeatherComponent implements OnInit {
   }
 
   showWeather() {
+    this.loading = true;
     if (this.cityName === '') {
+      this.loading = false;
       return;
     }
 
-    if(this.cityName == this.previousSearch){
+    if (this.cityName === this.previousSearch) {
       this.cityName = this.justYouSearchedForIt;
+      this.loading = false;
       return;
     }
 
@@ -38,13 +43,14 @@ export class HttpWeatherComponent implements OnInit {
     .subscribe((response: Response) => {
       if (response.json().count === 0) {
         this.cityName = this.cityNotFound;
+        this.loading = false;
         return;
       }
       response.json().list
       .map((jsonData: any) => {
         this.cityNames.push(this.weatherservice.mapJsonToCityWeather(jsonData));
-      }
-      );
+      });
+      this.loading = false;
     });
     this.savesSearchInPreviousSearch();
   }
