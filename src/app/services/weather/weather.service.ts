@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { CityWeather, CityPosition } from '../../models/cityWeather';
+import { keyForOpenWeatherMap } from '../../shared/open-weather-map-key';
 
 @Injectable()
 export class WeatherService {
-  private key: string = '&APPID=544acc97ad41e1c817efb0487429e01b';
+  private key: string = keyForOpenWeatherMap;
 
   constructor(
     private http: Http

@@ -41,3 +41,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Key For Open Weather Map
+open-weather-map-key.ts
