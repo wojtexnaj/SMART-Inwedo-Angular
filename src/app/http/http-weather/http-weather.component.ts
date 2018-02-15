@@ -12,65 +12,110 @@ import { Response } from '@angular/http';
 export class HttpWeatherComponent implements OnInit {
   cityName: string = '';
   cityNames: CityWeather[] = [];
-  cityNotFound: string = 'City not found.';
-  justYouSearchedForIt: string = 'You just searched for it.';
   previousSearch: string = '';
 
   loading: boolean = false;
+  undesirableBehavior: boolean = false;
+
+  infoToUser = {
+    cityNotFound: 'City not found.',
+    justYouSearchedForIt: 'You just searched for it.',
+    enterTheWord: 'Enter the word.',
+    theWordIsTooShort: 'The word is too short.',
+  };
 
   constructor(
-    private weatherservice: WeatherService
+    private weatherService: WeatherService
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   showWeather() {
     this.loading = true;
-    if (this.cityName === '') {
+
+    if (this.checkIsCityNameIsEmpty()) {
       this.loading = false;
       return;
     }
 
-    if (this.cityName === this.previousSearch) {
-      this.cityName = this.justYouSearchedForIt;
+    if (!this.isAWord()) {
+      this.cityName = this.infoToUser.enterTheWord;
+      this.undesirableBehavior = true;
+      this.loading = false;
+      return;
+    }
+
+    if (this.checkIsCityNameIsTooShort()) {
+      this.cityName = this.infoToUser.theWordIsTooShort;
+      this.undesirableBehavior = true;
+      this.loading = false;
+      return;
+    }
+
+    if (this.checkIsCityNameIsPreviousSearch()) {
+      this.cityName = this.infoToUser.justYouSearchedForIt;
+      this.undesirableBehavior = true;
       this.loading = false;
       return;
     }
 
     this.cleanCityNames();
-    this.weatherservice.getWeatherByCityName(this.cityName)
+    this.weatherService.getWeatherByCityName(this.cityName)
     .subscribe((response: Response) => {
       if (response.json().count === 0) {
-        this.cityName = this.cityNotFound;
+        this.cityName = this.infoToUser.cityNotFound;
+        this.undesirableBehavior = true;
         this.loading = false;
         return;
       }
       response.json().list
       .map((jsonData: any) => {
-        this.cityNames.push(this.weatherservice.mapJsonToCityWeather(jsonData));
+        this.cityNames.push(this.weatherService.mapJsonToCityWeather(jsonData));
       });
+      this.clearInput();
       this.loading = false;
     });
     this.savesSearchInPreviousSearch();
   }
+
+  clearInput() {
+    this.cityName = '';
+    this.undesirableBehavior = false;
+  }
+
   cleanCityNames() {
     this.cityNames = [];
   }
 
   cleanCityName() {
-    if (this.cityName === this.cityNotFound)
-      this.cityName = '';
-
-    if (this.cityName === this.justYouSearchedForIt)
-      this.cityName = '';
+    // TODO: refactor code
+    if (this.cityName === this.infoToUser.cityNotFound || this.cityName === this.infoToUser.justYouSearchedForIt || this.cityName === this.infoToUser.enterTheWord || this.cityName === this.infoToUser.theWordIsTooShort)
+      this.clearInput();
   }
 
   savesSearchInPreviousSearch() {
     this.previousSearch = this.cityName;
   }
 
-  clearInput() {
-    this.cityName = '';
+  checkIsCityNameIsEmpty(): boolean {
+    return (this.cityName === '');
+  }
+  checkIsCityNameIsTooShort(): boolean {
+    return (this.cityName.length < 3);
+  }
+
+  checkIsCityNameIsPreviousSearch(): boolean {
+    return (this.cityName === this.previousSearch);
+  }
+  // TODO: improve the function
+  isAWord(): boolean {
+    const alphabel: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    for (let i = 0; i < this.cityName.length; i++) {
+      if (alphabel.search(this.cityName.toUpperCase().slice(i, i + 1)) === -1) {
+        return false;
+      }
+    }
+    return true;
   }
 }

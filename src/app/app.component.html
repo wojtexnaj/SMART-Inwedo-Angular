@@ -8,10 +8,12 @@
           <i class="fa fa-times" *ngIf="isNavigation"></i>
         </div>
       </div>
-      <navigation></navigation>
+      <navigation (isNavigation)="hideNavigation($event)"></navigation>
     </div>
     <div class="main">
       <router-outlet></router-outlet>
     </div>
+  </div>
+  <div class="veil" *ngIf="isNavigation">
   </div>
 </div>

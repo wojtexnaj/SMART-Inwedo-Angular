@@ -6,10 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  isNavigation: boolean = false;
+isNavigation: boolean = false;
 
   switchNavigation() {
     this.isNavigation = !this.isNavigation;
+  }
+
+  hideNavigation(event) {
+    this.isNavigation = event;
   }
 }
