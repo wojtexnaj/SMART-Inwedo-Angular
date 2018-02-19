@@ -112,7 +112,7 @@ export class HttpWeatherComponent implements OnInit {
     const alphabel: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     for (let i = 0; i < this.cityName.length; i++) {
-      if (alphabel.search(this.cityName.toUpperCase().slice(i, i + 1)) === -1) {
+      if (alphabel.indexOf(this.cityName.toUpperCase().slice(i, i + 1)) === -1) {
         return false;
       }
     }
