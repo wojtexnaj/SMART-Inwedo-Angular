@@ -21,6 +21,11 @@ export class NavigationComponent implements OnInit {
       this.router.navigate(['/http-weather']);
       this.isNavigation.emit(false);
     }
+
+    if (subpageName === 'http-methods') {
+      this.router.navigate(['/http-methods']);
+      this.isNavigation.emit(false);
+    }
   }
 
 }

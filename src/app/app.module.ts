@@ -11,6 +11,7 @@ import { AppComponentList } from './app.component-list';
 
 // Services
 import { WeatherService } from './services/index';
+import { HttpMethodsService } from './services/index';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +29,8 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   providers: [
     // Services
-    WeatherService
+    WeatherService,
+    HttpMethodsService
   ],
   bootstrap: [AppComponent]
 })
