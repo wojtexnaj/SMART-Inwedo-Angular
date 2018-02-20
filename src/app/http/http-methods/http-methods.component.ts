@@ -10,12 +10,33 @@ import { Post } from '../../models';
 })
 export class HttpMethodsComponent implements OnInit {
   posts: Post[] = [];
+  selectedMethod: Method;
+  postNumbers: number[] = [];
+  selectedPostNumber: number = 0;
+
+  methods: Method[] = [
+    {id: 1, name: 'Get'},
+    {id: 2, name: 'Post'},
+    {id: 3, name: 'Put'},
+    {id: 4, name: 'Patch'},
+    {id: 5, name: 'Delete'}
+  ];
 
   constructor(
     private httpMethodsService: HttpMethodsService
   ) { }
 
   ngOnInit() {
+    this.postNumbers = this.givesPostNumbers();
+  }
+
+  givesPostNumbers() {
+    const numbers: numbers[] = [];
+
+    for ( let num = 0; num < 101; num++) {
+      numbers.push(num);
+    }
+    return numbers;
   }
 
   getPosts() {
@@ -25,5 +46,11 @@ export class HttpMethodsComponent implements OnInit {
         this.posts.push(this.httpMethodsService.mapJsonToPost(jsonPost));
       })
   );
+  }
+
 }
+
+class Method {
+  id: number;
+  name: string;
 }

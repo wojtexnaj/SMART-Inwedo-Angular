@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { WeatherService } from '../../services/index';
 import { CityWeather } from '../../models';
 import { Response } from '@angular/http';

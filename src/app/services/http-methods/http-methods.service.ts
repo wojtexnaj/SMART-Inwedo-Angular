@@ -5,12 +5,13 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class HttpMethodsService {
+  url: string: 'https://jsonplaceholder.typicode.com/';
 
   constructor(private http: Http) { }
 
   // We download all posts.
   getPosts(): Observable<Response> {
-    return this.http.get('https://jsonplaceholder.typicode.com/posts');
+    return this.http.get(this.url + 'posts');
   }
 
   mapJsonToPost(jsonData: any): Post {

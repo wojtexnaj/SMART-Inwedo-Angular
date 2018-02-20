@@ -5,19 +5,33 @@
         <h2 class=""mb-2>Http Methods</h2>
       </div>
       <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary" type="button">Button</button>
-        </div>
-        <select class="custom-select" id="inputGroupSelect03">
-          <option selected>Get Posts</option>
-          <option value="1">Get Post</option>
-          <option value="2">Get Post By User</option>
-          <option value="3">Add Post</option>
-          <option value="4">Update Post</option>
-          <option value="5">Delete Post</option>
-          <option value="6">Change Post</option>
+        <select class="custom-select"[(ngModel)]="selectedMethod">
+          <option *ngFor="let method of methods" [ngValue]="method">
+            {{ method.name }}
+          </option>
         </select>
       </div>
     </div>
   </div>
+  <div class="row mt-4" *ngIf="selectedMethod !=null">
+
+    <div *ngIf="selectedMethod.id == 1" class="col-7">
+      <div class="d-flex justify-content-start align-items-center">
+        <button class="btn btn-outline-secondary mr-2">get</button>
+        <div>https://jsonplaceholder.typicode.com/posts</div>
+
+        <div class="input-group mb-3">
+          <select class="custom-select"[(ngModel)]="selectedPostNumber">
+            <option *ngFor="let postNumber of postNumbers" [ngValue]="postNumber">
+              {{ postNumber }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-5" *ngIf="selectedMethod.id == 1">
+      działa
+    </div>
+  </div>
+
 </div>
