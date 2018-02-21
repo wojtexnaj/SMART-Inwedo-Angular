@@ -27,7 +27,7 @@ export class HttpWeatherComponent implements OnInit {
     private weatherService: WeatherService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   showWeather() {
     this.loading = true;
@@ -60,20 +60,20 @@ export class HttpWeatherComponent implements OnInit {
 
     this.cleanCityNames();
     this.weatherService.getWeatherByCityName(this.cityName)
-    .subscribe((response: Response) => {
-      if (response.json().count === 0) {
-        this.cityName = this.infoToUser.cityNotFound;
-        this.undesirableBehavior = true;
+      .subscribe((response: Response) => {
+        if (response.json().count === 0) {
+          this.cityName = this.infoToUser.cityNotFound;
+          this.undesirableBehavior = true;
+          this.loading = false;
+          return;
+        }
+        response.json().list
+          .map((jsonData: any) => {
+            this.cityNames.push(this.weatherService.mapJsonToCityWeather(jsonData));
+          });
+        this.clearInput();
         this.loading = false;
-        return;
-      }
-      response.json().list
-      .map((jsonData: any) => {
-        this.cityNames.push(this.weatherService.mapJsonToCityWeather(jsonData));
       });
-      this.clearInput();
-      this.loading = false;
-    });
     this.savesSearchInPreviousSearch();
   }
 
