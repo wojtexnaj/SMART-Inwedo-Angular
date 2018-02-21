@@ -1,26 +1,30 @@
 <div class="container-fluid mt-3">
   <div class="row">
     <div class="col">
-      <div>
-        <h2 class=""mb-2>Http Methods</h2>
-      </div>
-      <div class="input-group mb-3">
+      <h2 class=""mb-2>Http Methods</h2>
+
+      <div class="choose-method input-group mb-3">
         <select class="custom-select"[(ngModel)]="selectedMethod">
           <option *ngFor="let method of methods" [ngValue]="method">
             {{ method.name }}
           </option>
         </select>
+        <div class="input-group-append">
+          <label class="input-group-text">{{ selectedMethod.name }}</label>
+        </div>
       </div>
     </div>
   </div>
   <div class="row mt-4" *ngIf="selectedMethod !=null">
 
     <div *ngIf="selectedMethod.id == 1" class="col-7">
-      <div class="d-flex justify-content-start align-items-center">
-        <button class="btn btn-outline-secondary mr-2">get</button>
-        <div>https://jsonplaceholder.typicode.com/posts</div>
+      <div class="url mb-2"> const url = 'https://jsonplaceholder.typicode.com/posts';</div>
 
-        <div class="input-group mb-3">
+      <div class="d-flex justify-content-start align-items-center position-fixed">
+        <button class="btn btn-outline-secondary mr-2" (click)="getMethods()">get</button>
+        <div>url</div>
+
+        <div class="input-group select-post-number ml-2">
           <select class="custom-select"[(ngModel)]="selectedPostNumber">
             <option *ngFor="let postNumber of postNumbers" [ngValue]="postNumber">
               {{ postNumber }}
@@ -29,9 +33,23 @@
         </div>
       </div>
     </div>
+
     <div class="col-5" *ngIf="selectedMethod.id == 1">
-      działa
+      <div>
+        <div class="post-box mb-4" *ngFor="let post of posts">
+          <div class="">{{curlyBracketLeft}}</div>
+          <div class="ml-4"><strong>id</strong>: {{ post.id }},</div>
+          <div class="ml-4"><strong>user id</strong>: {{ post.userId }},</div>
+          <div class="ml-4"><strong>title</strong>: "{{ post.title }}",</div>
+          <div class="ml-4"><strong>body</strong>: "{{ post.body }}" </div>
+          <div>{{curlyBracketRight}}</div>
+       </div>
+      </div>
+
     </div>
   </div>
 
+  <div *ngIf="loading">
+    <loader></loader>
+  </div>
 </div>

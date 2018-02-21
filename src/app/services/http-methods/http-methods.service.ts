@@ -3,15 +3,16 @@ import { Post } from '../../models';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+const URL: string =  'https://jsonplaceholder.typicode.com/';
+
 @Injectable()
 export class HttpMethodsService {
-  url: string: 'https://jsonplaceholder.typicode.com/';
 
   constructor(private http: Http) { }
 
   // We download all posts.
   getPosts(): Observable<Response> {
-    return this.http.get(this.url + 'posts');
+    return this.http.get(URL + 'posts');
   }
 
   mapJsonToPost(jsonData: any): Post {

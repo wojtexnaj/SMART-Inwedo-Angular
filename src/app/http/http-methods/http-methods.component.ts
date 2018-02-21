@@ -9,10 +9,15 @@ import { Post } from '../../models';
   styleUrls: ['./http-methods.component.scss']
 })
 export class HttpMethodsComponent implements OnInit {
+  curlyBracketLeft: string = '{';
+  curlyBracketRight: string = '}';
+
   posts: Post[] = [];
-  selectedMethod: Method;
+  selectedMethod: Method = {};
   postNumbers: number[] = [];
   selectedPostNumber: number = 0;
+
+  loading: boolean = false;
 
   methods: Method[] = [
     {id: 1, name: 'Get'},
@@ -39,11 +44,19 @@ export class HttpMethodsComponent implements OnInit {
     return numbers;
   }
 
+  getMethods() {
+    if (this.selectedPostNumber === 0) {
+      this.getPosts();
+    }
+  }
+
   getPosts() {
+    this.loading = true;
     this.httpMethodsService.getPosts()
     .subscribe((response: Response) => response.json()
       .map(jsonPost => {
         this.posts.push(this.httpMethodsService.mapJsonToPost(jsonPost));
+        this.loading = false;
       })
   );
   }

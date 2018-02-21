@@ -1,0 +1,21 @@
+.container-fluid{
+  .choose-method {
+    label{
+      width: 72px;
+      height: 100%;
+    }
+  }
+  .select-post-number{
+    width: 70px;
+  }
+}
+
+.url {
+  font-size: 12px;
+}
+
+@media (min-width: 540px) {
+  .url {
+    font-size: 1rem;
+  }
+}
