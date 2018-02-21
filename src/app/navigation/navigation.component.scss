@@ -1,13 +1,13 @@
 @import '../../assets/index.scss';
-.container{
-  .row{
-    .navigation-item{
+.container {
+  .row {
+    .navigation-item {
       padding: 10px 5px;
       text-align: center;
       font-weight: bold;
       cursor: pointer;
       transition: all .5s linear;
-      &:hover{
+      &:hover {
         background-color: $blue-color;
         color: #ffffff;
       }

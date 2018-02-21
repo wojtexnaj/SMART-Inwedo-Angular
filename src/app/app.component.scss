@@ -1,8 +1,8 @@
 @import '../assets/index.scss';
-.container{
+.container {
   margin-top: 30px;
-  .row{
-    .navigation{
+  .row {
+    .navigation {
       position: absolute;
       background-color: #ffffff;
       z-index: 100;
@@ -10,7 +10,7 @@
       top: 164px;
       left: -200px;
       transition: all 0.5s linear;
-      .navigation-switch{
+      .navigation-switch {
         background-color: #ffffff;
         position: absolute;
         right: -30px;
@@ -19,21 +19,21 @@
         height: 30px;
         cursor: pointer;
         transition: all .5s linear;
-        &:hover{
+        &:hover {
           background-color: $blue-color;
           color: #ffffff;
         }
       }
-      &.navigation-on{
+      &.navigation-on {
         left: 0px;
         transition: all 0.5s linear;
       }
     }
-    .main{
+    .main {
       width: 100%;
     }
   }
-  .veil{
+  .veil {
     z-index: 10;
     position: fixed;
     top: 0px;

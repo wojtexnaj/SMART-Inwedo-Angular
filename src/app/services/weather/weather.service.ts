@@ -25,7 +25,7 @@ export class WeatherService {
     cityWeather.description = jsonData.weather[0].description;
     cityWeather.icon = jsonData.weather[0].icon;
     cityWeather.country = jsonData.sys.country;
-    cityWeather.temp =  Math.round(jsonData.main.temp);
+    cityWeather.temp = Math.round(jsonData.main.temp);
     cityWeather.position = this.mapJsonToCityPosition(jsonData.coord);
 
     return cityWeather;

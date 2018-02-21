@@ -1,96 +1,97 @@
 @import '../../../assets/index.scss';
-.container-fluid{
-  .row{
-    h2{
+.container-fluid {
+  .row {
+    h2 {
       font-size: 1.4rem;
     }
-    input{
+    input {
       width: 90%;
       font-size: 0.9rem;
-      &.error{
+      &.error {
         box-shadow: 0 0 0 0.2rem $red-color;
       }
     }
-    i{
+    i {
       cursor: pointer;
     }
-    button{
+    button {
       cursor: pointer;
     }
-    .weather-box{
+    .weather-box {
       box-shadow: 3px 0px 5px 2px $blue-color;
       padding: 10px;
       opacity: 0.8;
       transition: all 0.5s linear;
-      &:hover{
+      &:hover {
         box-shadow: 2px -2px 10px 2px $red-color;
         opacity: 1;
       }
-      .temp-box{
+      .temp-box {
         width: 100%;
-        .temp{
+        .temp {
           white-space: nowrap;
           font-size: 30px;
           font-weight: 700;
           width: 100%;
           text-align: center;
-          &.cold{
+          &.cold {
             color: #0000ff
           }
-          &.cool{
+          &.cool {
             color: #add8e6
           }
-          &.warm{
+          &.warm {
             color: #ffff00
           }
-          &.hot{
+          &.hot {
             color: #ff0000
           }
         }
-        .description{
+        .description {
           text-align: center;
         }
       }
-      .info-box{
+      .info-box {
         width: 100%;
       }
     }
-    .no-city{
+    .no-city {
       font-size: 20px;
       white-space: nowrap;
     }
   }
 }
+
 @media (min-width: 576px) {
-  .container-fluid{
-    .row{
-      h2{
+  .container-fluid {
+    .row {
+      h2 {
         font-size: 1.7rem;
       }
-      input{
+      input {
         font-size: 1rem;
       }
-      .no-city{
+      .no-city {
         font-size: 30px;
       }
     }
- }
+  }
 }
 
 @media (min-width: 768px) {
-  .container-fluid{
-    .row{
-      h2{
+  .container-fluid {
+    .row {
+      h2 {
         font-size: 2rem;
       }
-      .weather-box{
-        .temp-box{
+      .weather-box {
+        .temp-box {
           width: 100%;
         }
-        .info-box{
+        .info-box {
           width: 100%;
         }
       }
     }
- }
+  }
 }

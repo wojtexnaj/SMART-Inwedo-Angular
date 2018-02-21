@@ -20,11 +20,11 @@ export class HttpMethodsComponent implements OnInit {
   loading: boolean = false;
 
   methods: Method[] = [
-    {id: 1, name: 'Get'},
-    {id: 2, name: 'Post'},
-    {id: 3, name: 'Put'},
-    {id: 4, name: 'Patch'},
-    {id: 5, name: 'Delete'}
+    { id: 1, name: 'Get' },
+    { id: 2, name: 'Post' },
+    { id: 3, name: 'Put' },
+    { id: 4, name: 'Patch' },
+    { id: 5, name: 'Delete' }
   ];
 
   constructor(
@@ -36,9 +36,9 @@ export class HttpMethodsComponent implements OnInit {
   }
 
   givesPostNumbers() {
-    const numbers: numbers[] = [];
+    const numbers: number[] = [];
 
-    for ( let num = 0; num < 101; num++) {
+    for (let num = 0; num < 101; num++) {
       numbers.push(num);
     }
     return numbers;
