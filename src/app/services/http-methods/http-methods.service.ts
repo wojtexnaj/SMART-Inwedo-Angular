@@ -15,6 +15,10 @@ export class HttpMethodsService {
     return this.http.get(URL + 'posts');
   }
 
+  getPost(postId): Observable<Response> {
+    return this.http.get(URL + 'posts/' + postId);
+  }
+
   mapJsonToPost(jsonData: any): Post {
     const post = new Post();
 

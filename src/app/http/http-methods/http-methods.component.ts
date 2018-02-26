@@ -13,9 +13,9 @@ export class HttpMethodsComponent implements OnInit {
   curlyBracketRight: string = '}';
 
   posts: Post[] = [];
-  selectedMethod: Method = {};
-  postNumbers: number[] = [];
-  selectedPostNumber: number = 0;
+  selectedMethod: Method = new Method();
+  postIds: number[] = [];
+  selectedPostId: number = 0;
 
   loading: boolean = false;
 
@@ -32,7 +32,7 @@ export class HttpMethodsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.postNumbers = this.givesPostNumbers();
+    this.postIds = this.givesPostNumbers();
   }
 
   givesPostNumbers() {
@@ -44,14 +44,20 @@ export class HttpMethodsComponent implements OnInit {
     return numbers;
   }
 
-  getMethods() {
-    if (this.selectedPostNumber === 0) {
+  runMethodGet() {
+    console.log(this.selectedPostId);
+    if (this.selectedPostId === 0) {
       this.getPosts();
+      return;
+    }
+    if (this.selectedPostId !== 0) {
+      this.getPost();
     }
   }
 
   getPosts() {
     this.loading = true;
+    this.posts = [];
     this.httpMethodsService.getPosts()
     .subscribe((response: Response) => response.json()
       .map(jsonPost => {
@@ -59,6 +65,17 @@ export class HttpMethodsComponent implements OnInit {
         this.loading = false;
       })
   );
+  }
+
+  getPost() {
+    this.loading = true;
+    this.posts = [];
+    this.httpMethodsService.getPost(this.selectedPostId)
+    .subscribe((response: Response) => {
+      this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
+      this.loading = false;
+    }
+    );
   }
 
 }
