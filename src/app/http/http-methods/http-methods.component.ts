@@ -14,10 +14,13 @@ export class HttpMethodsComponent implements OnInit {
 
   posts: Post[] = [];
   selectedMethod: Method = new Method();
+  selectedUserId: string = '';
   postIds: number[] = [];
+  userIds: number[] = [];
   selectedPostId: number = 0;
 
   loading: boolean = false;
+  isCheckbox: boolean = false;
 
   methods: Method[] = [
     { id: 1, name: 'Get' },
@@ -33,6 +36,7 @@ export class HttpMethodsComponent implements OnInit {
 
   ngOnInit() {
     this.postIds = this.givesPostNumbers();
+    this.userIds = this.givesUserIdNumbers();
   }
 
   givesPostNumbers() {
@@ -44,14 +48,26 @@ export class HttpMethodsComponent implements OnInit {
     return numbers;
   }
 
+  givesUserIdNumbers() {
+    const numbers: number[] = [];
+
+    for (let num = 1; num < 11; num++) {
+      numbers.push(num);
+    }
+    return numbers;
+  }
+
   runMethodGet() {
-    console.log(this.selectedPostId);
-    if (this.selectedPostId === 0) {
+    if (this.selectedPostId === 0 && this.isCheckbox === false) {
       this.getPosts();
       return;
     }
-    if (this.selectedPostId !== 0) {
+    if (this.selectedPostId !== 0 && this.isCheckbox === false) {
       this.getPost();
+    }
+
+    if (this.selectedUserId && this.isCheckbox) {
+      this.getPostsByUserId();
     }
   }
 
@@ -76,6 +92,17 @@ export class HttpMethodsComponent implements OnInit {
       this.loading = false;
     }
     );
+  }
+
+  getPostsByUserId() {
+    this.loading = true;
+    this.posts = [];
+    this.httpMethodsService.getPostsByUserId(this.selectedUserId)
+    .subscribe((response: Response) => response.json()
+    .map(jsonPost => {
+      this.posts.push(this.httpMethodsService.mapJsonToPost(jsonPost));
+      this.loading = false;
+    }));
   }
 
 }

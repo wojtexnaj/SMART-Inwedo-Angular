@@ -1,22 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../../models';
 import { Http, Response } from '@angular/http';
+import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-const URL: string =  'https://jsonplaceholder.typicode.com/';
+const API_URL: string =  'https://jsonplaceholder.typicode.com/';
 
 @Injectable()
 export class HttpMethodsService {
 
   constructor(private http: Http) { }
 
-  // We download all posts.
+  // download all posts
   getPosts(): Observable<Response> {
-    return this.http.get(URL + 'posts');
+    return this.http.get(API_URL + 'posts');
+  }
+  // download one post for id
+  getPost(postId): Observable<Response> {
+    return this.http.get(API_URL + 'posts/' + postId);
   }
 
-  getPost(postId): Observable<Response> {
-    return this.http.get(URL + 'posts/' + postId);
+  // download posts for user id
+  getPostsByUserId(userId: string): Observable<Response> {
+    // TODO: find out why params do not work
+    const param = new HttpParams().set('userId', userId);
+    return this.http.get(API_URL + 'posts', { params: {'userId': userId} });
   }
 
   mapJsonToPost(jsonData: any): Post {

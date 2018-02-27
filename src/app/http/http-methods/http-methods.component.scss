@@ -5,8 +5,21 @@
       height: 100%;
     }
   }
-  .select-post-number{
-    width: 70px;
+  .control{
+    width: 40%;
+    .select-post-number{
+      select{
+        width: 70px;
+      }
+    }
+    .user-id {
+      min-width: 78px;
+    }
+    .select-user-id{
+      select{
+        width: 60px;
+      }
+    }
   }
 }
 
