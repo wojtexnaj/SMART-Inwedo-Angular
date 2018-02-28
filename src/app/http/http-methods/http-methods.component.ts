@@ -12,6 +12,8 @@ export class HttpMethodsComponent implements OnInit {
   curlyBracketLeft: string = '{';
   curlyBracketRight: string = '}';
 
+  newPost: Post = new Post();
+
   posts: Post[] = [];
   selectedMethod: Method = new Method();
   selectedUserId: string = '';
@@ -103,6 +105,17 @@ export class HttpMethodsComponent implements OnInit {
       this.posts.push(this.httpMethodsService.mapJsonToPost(jsonPost));
       this.loading = false;
     }));
+  }
+
+  addPost() {
+    this.loading = true;
+    this.posts = [];
+    this.httpMethodsService.addPost(this.newPost)
+    .subscribe((response: Response) => {
+      this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
+      this.loading = false;
+    }
+    );
   }
 
 }

@@ -27,6 +27,12 @@ export class HttpMethodsService {
     return this.http.get(API_URL + 'posts', { params: {'userId': userId} });
   }
 
+  // add post
+
+  addPost(post: Post): Observable<Response> {
+    return this.http.post(API_URL + 'posts', post);
+  }
+
   mapJsonToPost(jsonData: any): Post {
     const post = new Post();
 

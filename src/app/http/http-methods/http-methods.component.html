@@ -18,11 +18,11 @@
   <div class="row mt-4" *ngIf="selectedMethod !=null">
 
     <div *ngIf="selectedMethod.id == 1" class="col-7">
-      <div class="url mb-2"> const url = 'https://jsonplaceholder.typicode.com/posts<span *ngIf="selectedPostId === 0 && !isCheckbox">'</span><span *ngIf="selectedPostId === 0 && !isCheckbox">;</span><span *ngIf="selectedPostId !== 0 && !isCheckbox">/{{selectedPostId}}';</span><span *ngIf="isCheckbox">?userId={{selectedUserId}};</span></div>
+      <div class="url mb-2 text-blue"> const url = 'https://jsonplaceholder.typicode.com/posts<span *ngIf="selectedPostId === 0 && !isCheckbox">'</span><span *ngIf="selectedPostId === 0 && !isCheckbox">;</span><span *ngIf="selectedPostId !== 0 && !isCheckbox">/{{selectedPostId}}';</span><span *ngIf="isCheckbox">?userId={{selectedUserId}};</span></div>
 
-      <div class="d-flex justify-content-start align-items-center position-fixed control">
+      <div class="d-flex justify-content-start align-items-center position-fixed control-get">
         <button class="btn btn-outline-secondary mr-2" (click)="runMethodGet()">get</button>
-        <div>url</div>
+        <div class="text-blue">url</div>
 
         <div class="input-group select-post-number ml-2" [ngClass]="{ 'd-none' : isCheckbox }">
           <select class="custom-select"[(ngModel)]="selectedPostId" [disabled]="isCheckbox">
@@ -52,7 +52,26 @@
       </div>
     </div>
 
-    <div class="col-5" *ngIf="selectedMethod.id == 1">
+    <div *ngIf="selectedMethod.id == 2" class="col-7">
+        <div class="url mb-2 text-blue"> const url = 'https://jsonplaceholder.typicode.com/posts;</div>
+
+        <div class="d-flex justify-content-start align-items-center position-fixed control-post">
+          <button class="btn btn-outline-secondary mr-2" (click)="addPost()">post</button>
+          <div class="text-blue">url</div>
+          <div class="ml-2 d-flex flex-row flex-sm-column justify-content-start align-items-center">
+            <div>
+              <div class="d-flex flex-column flex-sm-row justify-content-start align-items-center"><div class="field">id: </div><input type="text" class="form-control" placeholder="101" [disabled]="true" ></div>
+              <div class="d-flex flex-column flex-sm-row justify-content-start align-items-center"><div class="field">user id:</div><input type="number" class="form-control" placeholder="user id" [(ngModel)]="newPost.userId"></div>
+            </div>
+            <div>
+              <div class="d-flex flex-column flex-sm-row justify-content-start align-items-center"><div class="field">title: </div> <textarea type="text" class="form-control" placeholder="title" [(ngModel)]="newPost.title"></textarea></div>
+              <div class="d-flex flex-column flex-sm-row justify-content-start align-items-center"><div class="field">body: </div><textarea type="text" class="form-control" placeholder="body" [(ngModel)]="newPost.body"></textarea></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="col-5" *ngIf="selectedMethod.id > 0">
       <div>
         <div class="post-box mb-4 pl-5 pl-md-0" *ngFor="let post of posts">
           <div class="">{{curlyBracketLeft}}</div>

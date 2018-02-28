@@ -1,3 +1,4 @@
+@import '../../../assets/_variables.scss';
 .container-fluid{
   .choose-method {
     label{
@@ -5,7 +6,7 @@
       height: 100%;
     }
   }
-  .control{
+  .control-get{
     width: 40%;
     .select-post-number{
       select{
@@ -21,10 +22,24 @@
       }
     }
   }
+  .control-post{
+    width: 60%;
+    input, textarea {
+      max-width: 250px;
+      overflow: hidden;
+    }
+    .field{
+      width: 70px;
+      white-space: nowrap;
+    }
+  }
 }
 
 .url {
   font-size: 12px;
+}
+.text-blue {
+  color: $blue-color;
 }
 
 @media (min-width: 540px) {
