@@ -26,7 +26,21 @@
     width: 60%;
     input, textarea {
       max-width: 250px;
-      overflow: hidden;
+      overflow-x: hidden;
+    }
+    .field{
+      width: 70px;
+      white-space: nowrap;
+    }
+  }
+  .control-put{
+    width: 40%;
+    .select-post-number{
+      width: 20%;
+    }
+    input, textarea {
+      max-width: 250px;
+      overflow-x: hidden;
     }
     .field{
       width: 70px;
