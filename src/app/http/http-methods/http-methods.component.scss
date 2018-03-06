@@ -1,4 +1,8 @@
 @import '../../../assets/_variables.scss';
+.z-index-1000 {
+  z-index: 1000;
+}
+
 .container-fluid {
   .choose-method {
     label {
@@ -37,13 +41,12 @@
     }
   }
   .control-put {
-    width: 40%;
     .select-post-number {
-      width: 20%;
+      width: 70px;
     }
     input,
     textarea {
-      width: 250px;
+      width: 140px;
       overflow-x: hidden;
     }
     .field {
@@ -54,7 +57,7 @@
 }
 
 .url {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .text-blue {

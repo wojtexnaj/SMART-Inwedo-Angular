@@ -18,7 +18,7 @@
 
   <div class="row mt-4" *ngIf="selectedMethod !=null">
 
-    <div *ngIf="selectedMethod.id == 1" class="col-6 col-md-7">
+    <div *ngIf="selectedMethod.id == 1" class="col-6 col-md-7 z-index-1000">
       <div class="url mb-2 text-blue"> const url = 'https://jsonplaceholder.typicode.com/posts
         <span *ngIf="selectedPostId === 0 && !isCheckbox">'</span>
         <span *ngIf="selectedPostId === 0 && !isCheckbox">;</span>
@@ -60,7 +60,7 @@
       </div>
     </div>
 
-    <div *ngIf="selectedMethod.id == 2" class="col-6 col-md-7">
+    <div *ngIf="selectedMethod.id == 2" class="col-6 col-md-7 z-index-1000">
       <div class="url mb-2 text-blue"> const url = 'https://jsonplaceholder.typicode.com/posts;</div>
 
       <div class="d-flex flex-column flex-md-row justify-content-start align-items-center position-fixed control-post">
@@ -94,39 +94,42 @@
       </div>
     </div>
 
-    <div *ngIf="selectedMethod.id == 3" class="col-6 col-md-7">
-      <div class="url mb-2 text-blue"> const url = 'https://jsonplaceholder.typicode.com/posts/{{selectedPostIdForPutSection}}';</div>
+    <div *ngIf="selectedMethod.id == 3" class="col-6 col-md-7 z-index-1000">
+      <div class="url mb-2 text-blue"> const url = 'https://jsonplaceholder.typicode.com/posts/
+        <span>{{selectedPostIdForPutSection}}';</span>
+      </div>
 
-      <div class="d-flex justify-content-start align-items-center position-fixed control-put">
-        <button class="btn btn-outline-secondary mr-2" *ngIf="!isPutPatch" (click)="getPost(selectedPostIdForPutSection)">get</button>
-        <button class="btn btn-outline-secondary mr-2" *ngIf="isPutPatch" (click)="updatePost()">put</button>
-        <div class="text-blue">url</div>
-
-        <div class="input-group select-post-number ml-2" [ngClass]="{'d-none': isPutPatch}">
-          <select class="custom-select" [(ngModel)]="selectedPostIdForPutSection">
-            <option *ngFor="let postId of postsIdsForPutSection" [ngValue]="postId">
-              {{ postId }}
-            </option>
-          </select>
+      <div class="d-flex flex-column flex-md-row justify-content-start align-items-center position-fixed control-put">
+        <div class="d-flex justify-content-start align-items-center mb-2 mb-md-0">
+          <button class="btn btn-outline-secondary mr-2" *ngIf="!isPutPatch" (click)="getPost(selectedPostIdForPutSection)">get</button>
+          <button class="btn btn-outline-secondary mr-2" *ngIf="isPutPatch" (click)="updatePost()">put</button>
+          <div class="text-blue">url</div>
+          <div class="input-group select-post-number ml-2" [ngClass]="{'d-none': isPutPatch}">
+            <select class="custom-select" [(ngModel)]="selectedPostIdForPutSection">
+              <option *ngFor="let postId of postsIdsForPutSection" [ngValue]="postId">
+                {{ postId }}
+              </option>
+            </select>
+          </div>
         </div>
 
-        <div class="ml-2 d-flex flex-row flex-sm-column justify-content-start align-items-center">
+        <div class="ml-2 d-flex flex-column justify-content-start align-items-center">
           <div>
-            <div class="d-flex flex-column flex-sm-row justify-content-start align-items-center">
+            <div class="d-flex justify-content-start align-items-center">
               <div class="field">id: </div>
               <input type="number" class="form-control" placeholder="id" [disabled]="!isPutPatch" [(ngModel)]="postForSectionPut.id">
             </div>
-            <div class="d-flex flex-column flex-sm-row justify-content-start align-items-center">
+            <div class="d-flex justify-content-start align-items-center">
               <div class="field">user id:</div>
               <input type="number" class="form-control" placeholder="user id" [disabled]="!isPutPatch" [(ngModel)]="postForSectionPut.userId">
             </div>
           </div>
           <div>
-            <div class="d-flex flex-column flex-sm-row justify-content-start align-items-center">
+            <div class="d-flex justify-content-start align-items-center">
               <div class="field">title: </div>
               <textarea type="text" class="form-control" placeholder="title" [disabled]="!isPutPatch" [(ngModel)]="postForSectionPut.title"></textarea>
             </div>
-            <div class="d-flex flex-column flex-sm-row justify-content-start align-items-center">
+            <div class="d-flex justify-content-start align-items-center">
               <div class="field">body: </div>
               <textarea type="text" class="form-control" placeholder="body" [disabled]="!isPutPatch" [(ngModel)]="postForSectionPut.body"></textarea>
             </div>
@@ -135,7 +138,7 @@
       </div>
     </div>
 
-    <div *ngIf="selectedMethod.id == 4" class="col-6 col-md-7">
+    <div *ngIf="selectedMethod.id == 4" class="col-6 col-md-7 z-index-1000">
       <div class="url mb-2 text-blue"> const url = 'https://jsonplaceholder.typicode.com/posts/{{selectedPostIdForPutSection}}';</div>
 
       <div class="d-flex justify-content-start align-items-center position-fixed control-put">
