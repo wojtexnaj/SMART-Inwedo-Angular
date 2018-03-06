@@ -2,18 +2,18 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { CityWeather, CityPosition } from '../../models';
-import { keyForOpenWeatherMap } from '../../shared/open-weather-map-key';
+// import { keyForOpenWeatherMap } from '../../shared/open-weather-map-key';
 
 @Injectable()
 export class WeatherService {
-  private key: string = keyForOpenWeatherMap;
+  // private key: string = keyForOpenWeatherMap;
 
   constructor(
     private http: Http
   ) { }
 
   getWeatherByCityName(cityname: string): Observable<Response> {
-    return this.http.get('http://api.openweathermap.org/data/2.5/find?q=' + cityname + this.key + '&units=metric');
+    return this.http.get('http://api.openweathermap.org/data/2.5/find?q=' + cityname + '&APPID=544acc97ad41e1c817efb0487429e01b' + '&units=metric');
   }
 
   mapJsonToCityWeather(jsonData: any): CityWeather {

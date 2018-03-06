@@ -25,10 +25,14 @@
             </div>
           </div>
           <div class="info-box">
-            <div><img src="http://openweathermap.org/img/w/{{ cityName.icon }}.png"></div>
+            <div>
+              <img src="http://openweathermap.org/img/w/{{ cityName.icon }}.png">
+            </div>
             <div>{{ cityName.name }}</div>
             <div>Country: {{ cityName.country }}</div>
-            <div>Position:<br> latitude - {{ cityName.position.latitude }}<br> longitude - {{ cityName.position.longitude }}</div>
+            <div>Position:
+              <br> latitude - {{ cityName.position.latitude }}
+              <br> longitude - {{ cityName.position.longitude }}</div>
           </div>
         </div>
       </div>

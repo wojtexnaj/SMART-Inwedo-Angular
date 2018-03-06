@@ -1,48 +1,52 @@
 @import '../../../assets/_variables.scss';
-.container-fluid{
+.container-fluid {
   .choose-method {
-    label{
+    label {
       width: 72px;
       height: 100%;
     }
   }
-  .control-get{
-    width: 40%;
-    .select-post-number{
-      select{
-        width: 70px;
+  .control-get {
+    .box-for-inputs {
+      max-width: 150px;
+      .select-post-number {
+        select {
+          width: 70px;
+        }
       }
-    }
-    .user-id {
-      min-width: 78px;
-    }
-    .select-user-id{
-      select{
-        width: 60px;
+      .user-id {
+        min-width: 78px;
+      }
+      .select-user-id {
+        select {
+          width: 60px;
+        }
       }
     }
   }
-  .control-post{
+  .control-post {
     width: 60%;
-    input, textarea {
+    input,
+    textarea {
       max-width: 250px;
       overflow-x: hidden;
     }
-    .field{
+    .field {
       width: 70px;
       white-space: nowrap;
     }
   }
-  .control-put{
+  .control-put {
     width: 40%;
-    .select-post-number{
+    .select-post-number {
       width: 20%;
     }
-    input, textarea {
+    input,
+    textarea {
       max-width: 250px;
       overflow-x: hidden;
     }
-    .field{
+    .field {
       width: 70px;
       white-space: nowrap;
     }
@@ -52,18 +56,37 @@
 .url {
   font-size: 12px;
 }
+
 .text-blue {
   color: $blue-color;
 }
 
 @media (min-width: 540px) {
-  .url {
-    font-size: 0.9rem;
+  .container-fluid {
+    .url {
+      font-size: 0.9rem;
+    }
+    .box-for-inputs {
+      max-width: 200px !important;
+    }
   }
 }
 
 @media (min-width: 720px) {
-  .url {
-    font-size: 1rem;
+  .container-fluid {
+    .url {
+      font-size: 1rem;
+    }
+    .box-for-inputs {
+      max-width: 244px !important;
+    }
+  }
+}
+
+@media (min-width: 960px) {
+  .container-fluid {
+    .box-for-inputs {
+      max-width: 250px !important;
+    }
   }
 }

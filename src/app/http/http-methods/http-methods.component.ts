@@ -77,12 +77,12 @@ export class HttpMethodsComponent implements OnInit {
     this.loading = true;
     this.posts = [];
     this.httpMethodsService.getPosts()
-    .subscribe((response: Response) => response.json()
-      .map(jsonPost => {
-        this.posts.push(this.httpMethodsService.mapJsonToPost(jsonPost));
-        this.loading = false;
-      })
-  );
+      .subscribe((response: Response) => response.json()
+        .map(jsonPost => {
+          this.posts.push(this.httpMethodsService.mapJsonToPost(jsonPost));
+          this.loading = false;
+        })
+      );
   }
 
   getPost(whereIsIdFrom: number) {
@@ -92,46 +92,46 @@ export class HttpMethodsComponent implements OnInit {
       this.isPutPatch = true;
     }
     this.httpMethodsService.getPost(whereIsIdFrom)
-    .subscribe((response: Response) => {
-      this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
-      if (whereIsIdFrom === this.selectedPostIdForPutSection) {
-        this.postForSectionPut.id = this.posts[0].id;
-        this.postForSectionPut.userId = this.posts[0].userId;
-        this.postForSectionPut.title = this.posts[0].title;
-        this.postForSectionPut.body = this.posts[0].body;
+      .subscribe((response: Response) => {
+        this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
+        if (whereIsIdFrom === this.selectedPostIdForPutSection) {
+          this.postForSectionPut.id = this.posts[0].id;
+          this.postForSectionPut.userId = this.posts[0].userId;
+          this.postForSectionPut.title = this.posts[0].title;
+          this.postForSectionPut.body = this.posts[0].body;
+        }
+        this.loading = false;
       }
-      this.loading = false;
-    }
-    );
+      );
   }
 
   getPostsByUserId() {
     this.loading = true;
     this.posts = [];
     this.httpMethodsService.getPostsByUserId(this.selectedUserId)
-    .subscribe((response: Response) => response.json()
-    .map(jsonPost => {
-      this.posts.push(this.httpMethodsService.mapJsonToPost(jsonPost));
-      this.loading = false;
-    }));
+      .subscribe((response: Response) => response.json()
+        .map(jsonPost => {
+          this.posts.push(this.httpMethodsService.mapJsonToPost(jsonPost));
+          this.loading = false;
+        }));
   }
 
   addPost() {
     this.loading = true;
     this.posts = [];
     this.httpMethodsService.addPost(this.newPost)
-    .subscribe((response: Response) => {
-      this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
-      this.loading = false;
-    }
-    );
+      .subscribe((response: Response) => {
+        this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
+        this.loading = false;
+      }
+      );
   }
 
   updatePost() {
     if (this.postForSectionPut.id === this.posts[0].id
-    && this.postForSectionPut.userId === this.posts[0].userId
-    && this.postForSectionPut.title === this.posts[0].title
-    && this.postForSectionPut.body === this.posts[0].body) {
+      && this.postForSectionPut.userId === this.posts[0].userId
+      && this.postForSectionPut.title === this.posts[0].title
+      && this.postForSectionPut.body === this.posts[0].body) {
       const post = new Post();
       post.id = 0;
       post.userId = 0;
@@ -145,11 +145,11 @@ export class HttpMethodsComponent implements OnInit {
       this.posts.pop();
     }
     this.httpMethodsService.updatePost(this.postForSectionPut)
-    .subscribe((response: Response) => {
-      this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
-      this.isPutPatch = false;
-      this.loading = false;
-    });
+      .subscribe((response: Response) => {
+        this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
+        this.isPutPatch = false;
+        this.loading = false;
+      });
   }
 
 }

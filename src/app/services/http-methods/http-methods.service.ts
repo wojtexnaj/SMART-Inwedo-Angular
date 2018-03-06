@@ -4,7 +4,7 @@ import { Http, Response } from '@angular/http';
 import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-const API_URL: string =  'https://jsonplaceholder.typicode.com/';
+const API_URL: string = 'https://jsonplaceholder.typicode.com/';
 
 @Injectable()
 export class HttpMethodsService {
@@ -24,7 +24,7 @@ export class HttpMethodsService {
   getPostsByUserId(userId: string): Observable<Response> {
     // TODO: find out why params do not work
     const param = new HttpParams().set('userId', userId);
-    return this.http.get(API_URL + 'posts', { params: {'userId': userId} });
+    return this.http.get(API_URL + 'posts', { params: { 'userId': userId } });
   }
 
   // add post
