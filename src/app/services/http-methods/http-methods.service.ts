@@ -37,6 +37,11 @@ export class HttpMethodsService {
     return this.http.put(API_URL + 'posts/' + post.id, post);
   }
 
+  // change post
+  changePost(post: Post): Observable<Response> {
+    return this.http.patch(API_URL + 'posts/' + post.id, post);
+  }
+
   mapJsonToPost(jsonData: any): Post {
     const post = new Post();
 

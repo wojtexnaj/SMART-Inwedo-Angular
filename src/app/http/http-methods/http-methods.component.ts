@@ -16,7 +16,7 @@ export class HttpMethodsComponent implements OnInit {
 
   posts: Post[] = [];
   selectedMethod: Method = new Method();
-  selectedUserId: string = '';
+  selectedUserId: any = 1;
   postIds: number[] = [];
   userIds: number[] = [];
   selectedPostId: number = 0;
@@ -38,6 +38,27 @@ export class HttpMethodsComponent implements OnInit {
   selectedPostIdForPutSection: number = 1;
   isPutPatch: boolean = false;
 
+  // patch section
+  postForSectionPatch: Post = new Post();
+  postsIdsForPatchSection: number[] = [];
+  selectedPostIdForPatchSection: number = 1;
+  isFieldSelected: boolean = false;
+
+  fieldsInPost: string[] = ['id', 'user id', 'title', 'body'];
+  selectedField: string = '';
+
+  clearAll() {
+    this.loading = false;
+    this.isCheckbox = false;
+    this.isPutPatch = false;
+    this.isFieldSelected = false;
+    this.posts = [];
+    this.postForSectionPut = new Post();
+    this.postForSectionPatch = new Post();
+    this.selectedPostIdForPutSection = 1;
+    this.selectedPostIdForPatchSection = 1;
+  }
+
   constructor(
     private httpMethodsService: HttpMethodsService
   ) { }
@@ -46,6 +67,7 @@ export class HttpMethodsComponent implements OnInit {
     this.postIds = this.giveNumbers(0, 100);
     this.userIds = this.giveNumbers(1, 10);
     this.postsIdsForPutSection = this.giveNumbers(1, 100);
+    this.postsIdsForPatchSection = this.giveNumbers(1, 100);
   }
 
   giveNumbers(numFrom, numTo) {
@@ -85,24 +107,26 @@ export class HttpMethodsComponent implements OnInit {
       );
   }
 
-  getPost(whereIsIdFrom: number) {
+  getPost(whereIsIdFrom: number, fromWhere?: string) {
     this.loading = true;
     this.posts = [];
-    if (whereIsIdFrom === this.selectedPostIdForPutSection) {
+    if (whereIsIdFrom === this.selectedPostIdForPutSection || whereIsIdFrom === this.selectedPostIdForPatchSection) {
       this.isPutPatch = true;
     }
     this.httpMethodsService.getPost(whereIsIdFrom)
       .subscribe((response: Response) => {
         this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
-        if (whereIsIdFrom === this.selectedPostIdForPutSection) {
-          this.postForSectionPut.id = this.posts[0].id;
-          this.postForSectionPut.userId = this.posts[0].userId;
-          this.postForSectionPut.title = this.posts[0].title;
-          this.postForSectionPut.body = this.posts[0].body;
-        }
+        fromWhere === 'put' ? this.mapPostsToPost(this.postForSectionPut, this.posts) : this.mapPostsToPost(this.postForSectionPatch, this.posts);
         this.loading = false;
       }
-      );
+      )
+  }
+
+  mapPostsToPost(post: Post, posts: Post[]) {
+    post.id = posts[0].id;
+    post.userId = this.posts[0].userId;
+    post.title = this.posts[0].title;
+    post.body = this.posts[0].body;
   }
 
   getPostsByUserId() {
@@ -128,18 +152,12 @@ export class HttpMethodsComponent implements OnInit {
   }
 
   updatePost() {
-    if (this.postForSectionPut.id === this.posts[0].id
-      && this.postForSectionPut.userId === this.posts[0].userId
-      && this.postForSectionPut.title === this.posts[0].title
-      && this.postForSectionPut.body === this.posts[0].body) {
-      const post = new Post();
-      post.id = 0;
-      post.userId = 0;
-      post.title = 'There are no changes';
-      post.body = 'Make changes and press put button';
-      this.posts.push(post);
+
+    if (this.checksIfThereWasChangeInPost(this.postForSectionPut, this.posts)) {
+      this.addInfoToView(this.posts);
       return;
     }
+
     this.loading = true;
     if (this.posts.length === 2) {
       this.posts.pop();
@@ -150,6 +168,51 @@ export class HttpMethodsComponent implements OnInit {
         this.isPutPatch = false;
         this.loading = false;
       });
+  }
+
+  checksIfThereWasChangeInPost(post: Post, posts: Post[]): boolean {
+    if (post.id === posts[0].id
+      && post.userId === posts[0].userId
+      && post.title === posts[0].title
+      && post.body === posts[0].body) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  addInfoToView(posts: Post[]) {
+    if (posts.length === 2) {
+      return;
+    }
+    const post = new Post();
+    post.id = 0;
+    post.userId = 0;
+    post.title = 'There are no changes';
+    post.body = 'Make changes and press put button';
+    this.posts.push(post);
+  }
+
+  changePost() {
+    if (this.checksIfThereWasChangeInPost(this.postForSectionPatch, this.posts)) {
+      this.addInfoToView(this.posts);
+      return;
+    }
+    this.loading = true;
+    if (this.posts.length === 2) {
+      this.posts.pop();
+    }
+    this.httpMethodsService.changePost(this.postForSectionPatch)
+      .subscribe((response: Response) => {
+        this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
+        this.isPutPatch = false;
+        this.switchIsFieldSelected();
+        this.loading = false;
+      });
+  }
+
+  switchIsFieldSelected() {
+    this.isFieldSelected = !this.isFieldSelected;
   }
 
 }

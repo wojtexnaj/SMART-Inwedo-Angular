@@ -40,7 +40,8 @@
       white-space: nowrap;
     }
   }
-  .control-put {
+  .control-put,
+  .control-patch {
     .select-post-number {
       width: 70px;
     }
@@ -52,6 +53,14 @@
     .field {
       width: 70px;
       white-space: nowrap;
+    }
+    .inputs-fields {
+      input {
+        width: 100px;
+      }
+    }
+    .fa-long-arrow-left {
+      cursor: pointer;
     }
   }
 }
