@@ -50,6 +50,7 @@ export class HttpMethodsComponent implements OnInit {
   // delete section
   postsIdsForDeleteSection: number[] = [];
   selectedPostIdForDeleteSection: number = 1;
+  isDelete: boolean = false;
 
   clearAll() {
     this.loading = false;
@@ -123,6 +124,7 @@ export class HttpMethodsComponent implements OnInit {
       .subscribe((response: Response) => {
         this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
         fromWhere === 'put' ? this.mapPostsToPost(this.postForSectionPut, this.posts) : this.mapPostsToPost(this.postForSectionPatch, this.posts);
+        this.isDelete = false;
         this.loading = false;
       }
       )
@@ -220,15 +222,19 @@ export class HttpMethodsComponent implements OnInit {
   deletePost() {
     this.loading = true;
     this.httpMethodsService.deletePost(1)
-      .subscribe((response: Response) => {
-        this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
+      .subscribe(() => {
         this.isPutPatchDelete = false;
+        this.isDelete = true;
         this.loading = false;
       });
   }
 
   switchIsFieldSelected() {
     this.isFieldSelected = !this.isFieldSelected;
+  }
+
+  switchIsPutPatchDelete() {
+    this.isPutPatchDelete = !this.isPutPatchDelete;
   }
 
 }

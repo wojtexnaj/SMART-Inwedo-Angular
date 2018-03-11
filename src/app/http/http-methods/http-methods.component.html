@@ -135,6 +135,7 @@
             </div>
           </div>
         </div>
+        <i class="fa fa-long-arrow-left text-secondary ml-2" *ngIf="isPutPatchDelete" (click)="switchIsPutPatchDelete()"></i>
       </div>
     </div>
 
@@ -161,6 +162,7 @@
             </option>
           </select>
         </div>
+        <i class="fa fa-long-arrow-left text-secondary ml-2" *ngIf="isPutPatchDelete && !isFieldSelected" (click)="switchIsPutPatchDelete()"></i>
 
         <div *ngIf="isFieldSelected && isPutPatchDelete" class="d-flex justify-content-start align-items-center ml-2 inputs-fields">
           <input type="number" class="form-control" *ngIf="selectedField === 'id'" [(ngModel)]="postForSectionPatch.id">
@@ -191,6 +193,7 @@
             </option>
           </select>
         </div>
+        <i class="fa fa-long-arrow-left text-secondary ml-2" *ngIf="isPutPatchDelete" (click)="switchIsPutPatchDelete()"></i>
 
       </div>
     </div>
@@ -207,6 +210,13 @@
             <strong>title</strong>: "{{ post.title }}",</div>
           <div>
             <strong>body</strong>: "{{ post.body }}" </div>
+          <div>{{curlyBracketRight}}</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="post-box mb-4 pl-5 pl-md-0 d-flex flex-row justify-content-start align-items-center" *ngIf="isDelete">
+          <div class="mr-1">{{curlyBracketLeft}}</div>
           <div>{{curlyBracketRight}}</div>
         </div>
       </div>
