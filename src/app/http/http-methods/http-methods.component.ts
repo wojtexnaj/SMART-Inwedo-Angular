@@ -236,7 +236,6 @@ export class HttpMethodsComponent implements OnInit {
   switchIsPutPatchDelete() {
     this.isPutPatchDelete = !this.isPutPatchDelete;
   }
-
 }
 
 class Method {

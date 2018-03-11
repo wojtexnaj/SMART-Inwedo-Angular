@@ -27,6 +27,17 @@
         }
       }
     }
+    .fa-arrow-circle-up {
+      font-size: 30px;
+      color: $blue-color;
+      position: absolute;
+      top: 50px;
+      left: 12px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
   }
   .control-post {
     width: 60%;

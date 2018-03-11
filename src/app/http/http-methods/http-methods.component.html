@@ -30,8 +30,8 @@
         <button class="btn btn-outline-secondary mr-2" (click)="runMethodGet()">get</button>
         <div class="text-blue">url</div>
 
-        <div class="d-flex flex-column flex-md-row justify-content-start align-items-center box-for-inputs">
-          <div class="input-group select-post-number ml-2" [ngClass]="{ 'd-none' : isCheckbox }">
+        <div class="d-flex flex-column flex-md-row justify-content-start align-items-center box-for-inputs ml-1">
+          <div class="input-group select-post-number" [ngClass]="{ 'd-none' : isCheckbox }">
             <select class="custom-select" [(ngModel)]="selectedPostId" [disabled]="isCheckbox">
               <option *ngFor="let postId of postIds" [ngValue]="postId">
                 {{ postId }}
@@ -39,7 +39,7 @@
             </select>
           </div>
 
-          <div class="input-group d-flex justify-content-around ml-1" *ngIf="selectedPostId > 0">
+          <div class="input-group d-flex justify-content-around" *ngIf="selectedPostId > 0">
             <div class="input-group-prepend">
               <div class="input-group-text">
                 <input type="checkbox" [(ngModel)]="isCheckbox">
@@ -56,7 +56,6 @@
             </select>
           </div>
         </div>
-
       </div>
     </div>
 
