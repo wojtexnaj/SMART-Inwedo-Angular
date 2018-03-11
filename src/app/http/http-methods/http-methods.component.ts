@@ -36,7 +36,7 @@ export class HttpMethodsComponent implements OnInit {
   postForSectionPut: Post = new Post();
   postsIdsForPutSection: number[] = [];
   selectedPostIdForPutSection: number = 1;
-  isPutPatch: boolean = false;
+  isPutPatchDelete: boolean = false;
 
   // patch section
   postForSectionPatch: Post = new Post();
@@ -47,16 +47,21 @@ export class HttpMethodsComponent implements OnInit {
   fieldsInPost: string[] = ['id', 'user id', 'title', 'body'];
   selectedField: string = '';
 
+  // delete section
+  postsIdsForDeleteSection: number[] = [];
+  selectedPostIdForDeleteSection: number = 1;
+
   clearAll() {
     this.loading = false;
     this.isCheckbox = false;
-    this.isPutPatch = false;
+    this.isPutPatchDelete = false;
     this.isFieldSelected = false;
     this.posts = [];
     this.postForSectionPut = new Post();
     this.postForSectionPatch = new Post();
     this.selectedPostIdForPutSection = 1;
     this.selectedPostIdForPatchSection = 1;
+    this.selectedPostIdForDeleteSection = 1;
   }
 
   constructor(
@@ -68,6 +73,7 @@ export class HttpMethodsComponent implements OnInit {
     this.userIds = this.giveNumbers(1, 10);
     this.postsIdsForPutSection = this.giveNumbers(1, 100);
     this.postsIdsForPatchSection = this.giveNumbers(1, 100);
+    this.postsIdsForDeleteSection = this.giveNumbers(1, 100);
   }
 
   giveNumbers(numFrom, numTo) {
@@ -110,8 +116,8 @@ export class HttpMethodsComponent implements OnInit {
   getPost(whereIsIdFrom: number, fromWhere?: string) {
     this.loading = true;
     this.posts = [];
-    if (whereIsIdFrom === this.selectedPostIdForPutSection || whereIsIdFrom === this.selectedPostIdForPatchSection) {
-      this.isPutPatch = true;
+    if (whereIsIdFrom === this.selectedPostIdForPutSection || whereIsIdFrom === this.selectedPostIdForPatchSection || whereIsIdFrom === this.selectedPostIdForDeleteSection) {
+      this.isPutPatchDelete = true;
     }
     this.httpMethodsService.getPost(whereIsIdFrom)
       .subscribe((response: Response) => {
@@ -165,7 +171,7 @@ export class HttpMethodsComponent implements OnInit {
     this.httpMethodsService.updatePost(this.postForSectionPut)
       .subscribe((response: Response) => {
         this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
-        this.isPutPatch = false;
+        this.isPutPatchDelete = false;
         this.loading = false;
       });
   }
@@ -205,8 +211,18 @@ export class HttpMethodsComponent implements OnInit {
     this.httpMethodsService.changePost(this.postForSectionPatch)
       .subscribe((response: Response) => {
         this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
-        this.isPutPatch = false;
+        this.isPutPatchDelete = false;
         this.switchIsFieldSelected();
+        this.loading = false;
+      });
+  }
+
+  deletePost() {
+    this.loading = true;
+    this.httpMethodsService.deletePost(1)
+      .subscribe((response: Response) => {
+        this.posts.push(this.httpMethodsService.mapJsonToPost(response.json()));
+        this.isPutPatchDelete = false;
         this.loading = false;
       });
   }

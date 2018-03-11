@@ -42,6 +42,11 @@ export class HttpMethodsService {
     return this.http.patch(API_URL + 'posts/' + post.id, post);
   }
 
+  // delete post
+  deletePost(postId): Observable<Response> {
+    return this.http.delete(API_URL + 'posts/' + postId);
+  }
+
   mapJsonToPost(jsonData: any): Post {
     const post = new Post();
 
