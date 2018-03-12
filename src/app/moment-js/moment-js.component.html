@@ -1,3 +1,16 @@
-<p>
-  moment-js works!
-</p>
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col">
+        <h2 class="mb-2">Moment.js</h2>
+        <div class="d-flex justify-content-start align-items-center checking-period">
+          <input type="date" class="form-control" [(ngModel)]="firstDate">
+          <input type="number" class="form-control input-add" [(ngModel)]="days">
+          <input type="number" class="form-control input-add" [(ngModel)]="weeks">
+          <input type="number" class="form-control input-add" [(ngModel)]="months">
+          <input type="number" class="form-control input-add" [(ngModel)]="years">
+          <button (click)="checking()">check</button>
+          <div>{{ result }}</div>
+        </div>
+    </div>
+  </div>
+</div>
