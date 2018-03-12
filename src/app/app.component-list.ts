@@ -8,6 +8,9 @@ import { HttpMethodsComponent } from './http/http-methods/http-methods.component
 // Shared
 import { LoaderComponent } from './shared/loader/loader.component';
 
+// Moment JS
+import { MomentJsComponent } from './moment-js/moment-js.component';
+
 export const AppComponentList = [
   NavigationComponent,
   HeaderComponent,
@@ -15,6 +18,9 @@ export const AppComponentList = [
   // Http
   HttpWeatherComponent,
   HttpMethodsComponent,
+
+  // Moment JS
+  MomentJsComponent,
 
   // Shared
   LoaderComponent
