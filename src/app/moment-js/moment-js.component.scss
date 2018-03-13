@@ -1,10 +1,24 @@
+@import '../../assets/index.scss';
 .container-fluid{
   .checking-period{
+    label{
+      width: 100%;
+      text-align: left;
+      font-size: 10px;
+      color: rgb(131, 133, 138);
+    }
     input{
-      width: 200px;
+      width: 175px;
     }
     .input-add{
       width: 100px;
+    }
+    button{
+      align-self: flex-end;
+    }
+    .result {
+      align-self: flex-end;
+      padding-bottom: 6px;
     }
   }
 }
