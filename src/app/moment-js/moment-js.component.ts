@@ -8,12 +8,14 @@ import * as moment from 'moment';
 })
 export class MomentJsComponent implements OnInit {
   firstDate: string = '';
-  days: number = 0;
-  weeks: number = 0;
-  months: number = 0;
   years: number = 0;
+  months: number = 0;
+  weeks: number = 0;
+  days: number = 0;
+
   result: string;
-  isNotEnterFirsDate: boolean = false;
+  isCalculatedFirst: boolean = false;
+  isDateSelected: boolean = false;
 
   startDate: string = '';
   endDate: string = '';
@@ -26,20 +28,34 @@ export class MomentJsComponent implements OnInit {
   ngOnInit() {
   }
 
-  calculate() {
-    if (this.firstDate === '') {
-      this.isNotEnterFirsDate = true;
-      return;
+  calculate(witchCalculate: string) {
+    if (witchCalculate === 'firstCalculate') {
+
+      this.result = moment(this.firstDate).add({
+        days: this.days,
+        weeks: this.weeks,
+        months: this.months,
+        years: this.years
+      }).format('YYYY-MM-DD');
+      this.isCalculatedFirst = true;
     }
 
-    this.result = moment(this.firstDate).add({
-      days: this.days,
-      weeks: this.weeks,
-      months: this.months,
-      years: this.years
-    }).format('YYYY-MM-DD');
-    this.isNotEnterFirsDate = false;
+    if (witchCalculate === 'secondCalculate') {
+      this.isEnterStartDate = !this.startDate;
+      this.isEnterEndtDate = !this.endDate;
+
+      if (this.isEnterStartDate || this.isEnterEndtDate) {
+        return;
+      }
+
+      this.isEnterStartDate = false;
+      this.isEnterEndtDate = false;
+
+      this.time = this.mapMomentObjToTime(moment(this.startDate), moment(this.endDate));
+    }
+
   }
+
   removeError(whence: string) {
     if (whence === 'firstDate') {
       this.isNotEnterFirsDate = false;
@@ -52,27 +68,16 @@ export class MomentJsComponent implements OnInit {
     }
   }
 
-  calculate2() {
-    if (this.startDate === '' && this.endDate === '') {
-      this.isEnterStartDate = true;
-      this.isEnterEndtDate = true;
-      return;
-    }
-    if (this.startDate === '' && this.endDate !== '') {
-      this.isEnterStartDate = true;
-      this.isEnterEndtDate = false;
-      return;
-    }
-    if (this.startDate !== '' && this.endDate === '') {
-      this.isEnterStartDate = false;
-      this.isEnterEndtDate = true;
-      return;
-    }
-    this.isEnterStartDate = false;
-    this.isEnterEndtDate = false;
+  cleanFieldsInFirstCalculate() {
+    this.years = 0;
+    this.months = 0;
+    this.weeks = 0;
+    this.days = 0;
+    this.result = '';
+    this.isCalculatedFirst = false;
+  }
 
-    const startDate = moment(this.startDate);
-    const endDate = moment(this.endDate);
+  mapMomentObjToTime(startDate: any, endDate: any) {
     const time  = new Time();
     time.milliseconds = endDate.diff(startDate, 'milliseconds');
     time.seconds = endDate.diff(startDate, 'seconds');
@@ -83,7 +88,7 @@ export class MomentJsComponent implements OnInit {
     time.months = endDate.diff(startDate, 'months');
     time.years = endDate.diff(startDate, 'years');
 
-    this.time = time;
+    return time;
   }
 
 }

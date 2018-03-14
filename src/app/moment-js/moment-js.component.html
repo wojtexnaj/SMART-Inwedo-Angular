@@ -5,27 +5,34 @@
         <div class="d-flex justify-content-start align-items-center checking-period">
           <div class="mr-1">
               <label>choose date</label>
-              <input type="date" class="form-control" [(ngModel)]="firstDate" [ngClass]="{'error' : isNotEnterFirsDate}" (focus)="removeError('firstDate')">
+              <input type="date" class="form-control" [(ngModel)]="firstDate" (focus)="removeError('firstDate')">
           </div>
-          <div>
-            <label>add/subtract days</label>
-            <input type="number" class="form-control input-add" [(ngModel)]="days">
+          <div *ngIf="!firstDate" class="d-flex justify-content-start align-items-center ml-2 info-box">
+            <i class="fa fa-hand-o-left mr-2"></i>
+            <div><strong>Choose date</strong></div>
           </div>
-          <div>
-              <label>add/subtract weeks</label>
-              <input type="number" class="form-control input-add" [(ngModel)]="weeks">
-          </div>
-          <div>
-              <label>add/subtract months</label>
-              <input type="number" class="form-control input-add" [(ngModel)]="months">
-          </div>
-          <div>
+          <div *ngIf="firstDate" class="d-flex justify-content-start align-items-center">
+            <div>
               <label>add/subtract years</label>
               <input type="number" class="form-control input-add" [(ngModel)]="years">
-          </div>
-          <button (click)="calculate()" class="ml-3 btn btn-outline-secondary">calculate</button>
-          <div class="ml-3 result">
-            <strong>{{ result }}</strong>
+            </div>
+            <div>
+                <label>add/subtract months</label>
+                <input type="number" class="form-control input-add" [(ngModel)]="months">
+            </div>
+            <div>
+              <label>add/subtract weeks</label>
+              <input type="number" class="form-control input-add" [(ngModel)]="weeks">
+            </div>
+            <div>
+              <label>add/subtract days</label>
+              <input type="number" class="form-control input-add" [(ngModel)]="days">
+            </div>
+            <button (click)="calculate('firstCalculate')" class="ml-3 btn btn-outline-secondary">calculate</button>
+            <div class="ml-3 result">
+              <strong>{{ result }}</strong>
+              <i class="fa fa-trash text-secondary" *ngIf="isCalculatedFirst" (click)="cleanFieldsInFirstCalculate()"></i>
+            </div>
           </div>
         </div>
         <div class="d-flex justify-content-start align-items-center checking-period">
@@ -37,7 +44,7 @@
                 <label>end date</label>
                 <input type="date" class="form-control" [(ngModel)]="endDate" [ngClass]="{'error' : isEnterEndtDate}" (focus)="removeError('endDate')">
             </div>
-            <button (click)="calculate2()" class="ml-3 btn btn-outline-secondary">calculate</button>
+            <button (click)="calculate('secondCalculate')" class="ml-3 btn btn-outline-secondary">calculate</button>
 
             <div *ngIf="time" class="ml-3 d-flex justify-content-between align-items-center result">
               <div class="mr-2">

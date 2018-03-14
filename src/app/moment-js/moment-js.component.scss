@@ -1,6 +1,9 @@
 @import '../../assets/index.scss';
 .container-fluid{
   .checking-period{
+    .info-box{
+      margin-top: 30px;
+    }
     label{
       width: 100%;
       text-align: left;
@@ -19,6 +22,10 @@
     .result {
       align-self: flex-end;
       padding-bottom: 6px;
+      .fa-trash{
+        font-size: 20px;
+        cursor: pointer;
+      }
     }
   }
 }
