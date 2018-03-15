@@ -56,25 +56,23 @@ export class MomentJsComponent implements OnInit {
 
   }
 
-  removeError(whence: string) {
-    if (whence === 'firstDate') {
-      this.isNotEnterFirsDate = false;
+  cleanField(which: string) {
+    if (which === 'firstCalculate') {
+      this.years = 0;
+      this.months = 0;
+      this.weeks = 0;
+      this.days = 0;
+      this.result = '';
+      this.isCalculatedFirst = false;
     }
+  }
+  removeError(whence: string) {
     if (whence === 'startDate') {
       this.isEnterStartDate = false;
     }
     if (whence === 'endDate') {
       this.isEnterEndtDate = false;
     }
-  }
-
-  cleanFieldsInFirstCalculate() {
-    this.years = 0;
-    this.months = 0;
-    this.weeks = 0;
-    this.days = 0;
-    this.result = '';
-    this.isCalculatedFirst = false;
   }
 
   mapMomentObjToTime(startDate: any, endDate: any) {

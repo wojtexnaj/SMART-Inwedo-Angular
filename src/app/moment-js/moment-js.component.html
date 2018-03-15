@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-start align-items-center checking-period">
           <div class="mr-1">
               <label>choose date</label>
-              <input type="date" class="form-control" [(ngModel)]="firstDate" (focus)="removeError('firstDate')">
+              <input type="date" class="form-control" [(ngModel)]="firstDate">
           </div>
           <div *ngIf="!firstDate" class="d-flex justify-content-start align-items-center ml-2 info-box">
             <i class="fa fa-hand-o-left mr-2"></i>
@@ -31,7 +31,7 @@
             <button (click)="calculate('firstCalculate')" class="ml-3 btn btn-outline-secondary">calculate</button>
             <div class="ml-3 result">
               <strong>{{ result }}</strong>
-              <i class="fa fa-trash text-secondary" *ngIf="isCalculatedFirst" (click)="cleanFieldsInFirstCalculate()"></i>
+              <i class="fa fa-trash text-secondary" *ngIf="isCalculatedFirst" (click)="cleanField('firstCalculate')"></i>
             </div>
           </div>
         </div>
