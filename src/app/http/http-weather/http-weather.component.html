@@ -3,7 +3,7 @@
     <div class="col-6">
       <div class="position-fixed">
         <div>
-          <h2 class="mb-2">Weather in your city</h2>
+          <h2>Weather in your city</h2>
         </div>
         <div class="d-flex justify-content-start align-items-center">
           <input class="form-control mr-2" [(ngModel)]="cityName" placeholder="Enter the city name." (focus)="cleanCityName()" [ngClass]="{ 'error': undesirableBehavior }">
@@ -14,7 +14,7 @@
     </div>
     <div class="col-6">
       <div class="text-center">
-        <h2 class="mb-2">Weather</h2>
+        <h2>Weather</h2>
       </div>
       <div *ngIf="cityNames.length > 0">
         <div *ngFor="let cityName of cityNames" class="weather-box mb-4 d-flex flex-md-row flex-column justify-content-between">

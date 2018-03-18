@@ -4,10 +4,19 @@
 }
 
 .container-fluid {
+  h2 {
+    margin-bottom: 20px;
+  }
   .choose-method {
+    position: relative;
     label {
       width: 72px;
       height: 100%;
+    }
+    .info-box {
+      position: absolute;
+      top: 52px;
+      animation: info 1s linear infinite;
     }
   }
   .control-get {
@@ -111,5 +120,17 @@
     .box-for-inputs {
       max-width: 250px !important;
     }
+  }
+}
+
+@keyframes info {
+  0% {
+    top: 57px;
+  }
+  50% {
+    top: 52px;
+  }
+  100% {
+    top: 57px;
   }
 }

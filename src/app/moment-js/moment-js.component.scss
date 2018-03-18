@@ -1,31 +1,61 @@
-@import '../../assets/index.scss';
-.container-fluid{
-  .checking-period{
-    .info-box{
-      margin-top: 30px;
-    }
-    label{
-      width: 100%;
-      text-align: left;
-      font-size: 10px;
-      color: rgb(131, 133, 138);
-    }
-    input{
-      width: 175px;
-    }
-    .input-add{
-      width: 100px;
-    }
-    button{
-      align-self: flex-end;
-    }
-    .result {
-      align-self: flex-end;
-      padding-bottom: 6px;
-      .fa-trash{
-        font-size: 20px;
-        cursor: pointer;
+  @import '../../assets/index.scss';
+  .container-fluid {
+    .checking-period {
+      margin-bottom: 30px;
+      .info-box {
+        position: absolute;
+        top: 36px;
+        right: -125px;
+        animation: info 1s linear infinite;
+      }
+      label {
+        width: 100%;
+        text-align: left;
+        font-size: 10px;
+        color: rgb(131, 133, 138);
+      }
+      input {
+        width: 175px;
+      }
+      .input-add {
+        width: 100px;
+      }
+      button {
+        &.first-button {
+          width: 102px;
+        }
+      }
+      .result {
+        padding-bottom: 6px;
+        .fa-trash {
+          font-size: 20px;
+          cursor: pointer;
+          animation: trash 2s ease infinite 4s;
+        }
       }
     }
   }
-}
+
+  @keyframes info {
+    0% {
+      right: -125px;
+    }
+    50% {
+      right: -135px;
+    }
+    100% {
+      right: -125px;
+    }
+  }
+
+  @keyframes trash {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

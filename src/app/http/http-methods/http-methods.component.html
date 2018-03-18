@@ -1,9 +1,16 @@
 <div class="container-fluid mt-3">
   <div class="row">
     <div class="col">
-      <h2 class="mb-2">Http Methods</h2>
+      <h2>Http Methods</h2>
 
       <div class="choose-method input-group mb-3">
+        <div class="d-flex justify-content-start align-items-center info-box" *ngIf="!selectedMethod.name">
+          <div>
+            <strong>Choose method</strong>
+          </div>
+          <i class="fa fa-hand-o-up ml-2"></i>
+        </div>
+
         <select class="custom-select" [(ngModel)]="selectedMethod" (ngModelChange)="clearAll()">
           <option *ngFor="let method of methods" [ngValue]="method">
             {{ method.name }}

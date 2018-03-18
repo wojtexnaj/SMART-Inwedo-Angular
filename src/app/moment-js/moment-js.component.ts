@@ -36,7 +36,7 @@ export class MomentJsComponent implements OnInit {
         weeks: this.weeks,
         months: this.months,
         years: this.years
-      }).format('YYYY-MM-DD');
+      }).format('DD-MM-YYYY');
       this.isCalculatedFirst = true;
     }
 
@@ -76,7 +76,7 @@ export class MomentJsComponent implements OnInit {
   }
 
   mapMomentObjToTime(startDate: any, endDate: any) {
-    const time  = new Time();
+    const time = new Time();
     time.milliseconds = endDate.diff(startDate, 'milliseconds');
     time.seconds = endDate.diff(startDate, 'seconds');
     time.minutes = endDate.diff(startDate, 'minutes');
