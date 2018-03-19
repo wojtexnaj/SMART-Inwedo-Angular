@@ -5,9 +5,17 @@
   .row {
     height: 160px;
     .title {
-      color: #ffffff;
       font-size: 45px;
       text-shadow: 2px 2px 2px $red-color;
+      a{
+        text-decoration: none;
+        cursor: pointer;
+        color: #ffffff;
+        &:hover {
+          opacity: 0.8;
+          text-shadow: 2px 2px 2px $red-color;
+        }
+      }
     }
   }
 }

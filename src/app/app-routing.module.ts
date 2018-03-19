@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'http-weather', component: HttpWeatherComponent, pathMatch: 'full' },
   { path: 'http-methods', component: HttpMethodsComponent, pathMatch: 'full' },
   { path: 'moment-js', component: MomentJsComponent, pathMatch: 'full' }
+  { path: '**', redirectTo: '/welcome-page' }
 ];
 
 @NgModule({
