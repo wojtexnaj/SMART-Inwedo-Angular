@@ -11,6 +11,9 @@ import { LoaderComponent } from './shared/loader/loader.component';
 // Moment JS
 import { MomentJsComponent } from './moment-js/moment-js.component';
 
+// Welcome Page
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+
 export const AppComponentList = [
   NavigationComponent,
   HeaderComponent,
@@ -19,9 +22,12 @@ export const AppComponentList = [
   HttpWeatherComponent,
   HttpMethodsComponent,
 
+  // Shared
+  LoaderComponent,
+
   // Moment JS
   MomentJsComponent,
 
-  // Shared
-  LoaderComponent
+  // Welcome Page
+  WelcomePageComponent
 ];
