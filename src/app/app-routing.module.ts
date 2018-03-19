@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpWeatherComponent } from './http/http-weather/http-weather.component';
-import { HttpMethodsComponent } from './http/http-methods/http-methods.component';
+import {
+  HttpWeatherComponent,
+  HttpMethodsComponent
+ } from './http/index';
 import { MomentJsComponent } from './moment-js/moment-js.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
