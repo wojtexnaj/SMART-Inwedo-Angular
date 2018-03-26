@@ -16,7 +16,7 @@
     .info-box {
       position: absolute;
       top: 52px;
-      animation: info 1s linear infinite;
+      left: 10px;
     }
   }
   .control-get {
@@ -123,14 +123,3 @@
   }
 }
 
-@keyframes info {
-  0% {
-    top: 57px;
-  }
-  50% {
-    top: 52px;
-  }
-  100% {
-    top: 57px;
-  }
-}
