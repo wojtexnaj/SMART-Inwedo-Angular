@@ -2,20 +2,48 @@
   <div class="row">
     <div class="col">
       <h2>Welcome :-)</h2>
-      <p>The application was created as part of the individual development of SMART in <a href="http://inwedo.com" target="_blank">Inwedo</a>.</p>
-      <p>The scope of work included the use of: Angular 5, the Moment.js library and all this as part of the good programming practices of KISS and DRY.</p>
-      <p>Used portals in the application:</p>
+      <p>The application was created as part of the individual development of SMART in
+        <a href="http://inwedo.com" target="_blank" class="inwedo-link">Inwedo</a>.</p>
+      <p>The scope of work included the use of: Angular 5, the Moment.js library and all this as part of the good programming
+        practices of KISS and DRY.</p>
+      <p class="mt-5">Used portals in the application:</p>
       <div class="links">
-        <a href="https://openweathermap.org/api" target="_blank" class="link"><div>https://openweathermap.org/api</div></a>
-        <a href="https://jsonplaceholder.typicode.com" target="_blank" class="link"><div>https://jsonplaceholder.typicode.com</div></a>
-        <a href="https://cli.angular.io" target="_blank" class="link"><div>https://cli.angular.io</div></a>
-        <a href="https://fontawesome.com" target="_blank" class="link"><div>https://fontawesome.com</div></a>
-        <a href="https://momentjs.com" target="_blank" class="link"><div>https://momentjs.com</div></a>
+        <a href="https://openweathermap.org/api" target="_blank" class="link">
+          <div>https://openweathermap.org/api</div>
+        </a>
+        <a href="https://jsonplaceholder.typicode.com" target="_blank" class="link">
+          <div>https://jsonplaceholder.typicode.com</div>
+        </a>
+        <a href="https://cli.angular.io" target="_blank" class="link">
+          <div>https://cli.angular.io</div>
+        </a>
+        <a href="https://fontawesome.com" target="_blank" class="link">
+          <div>https://fontawesome.com</div>
+        </a>
+        <a href="https://momentjs.com" target="_blank" class="link">
+          <div>https://momentjs.com</div>
+        </a>
       </div>
     </div>
   </div>
-  <div class="footer">
-    <div>Wojciech Najda:)</div>
+  <div class="footer d-flex flex-column justify-content-center align-items-end">
+    <div class="contact">
+      <span class="phone-number mr-2" *ngIf="isPhoneNumber">+48 698655623</span>
+      <span class="mail mr-2" *ngIf="isMail">wojciech.najda.sg@gmail.com</span>
+      <button (click)="showPhoneNumber()">
+        <i class="fa fa-phone-square"></i>
+      </button>
+      <button (click)="showMail()">
+        <i class="fa fa-at"></i>
+      </button>
+
+      <a href="https://www.linkedin.com/in/wojciech-najda/" target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/wojtexnaj" target="_blank">
+        <i class="fa fa-github-square"></i>
+      </a>
+    </div>
+    <div class="name">Wojciech Najda &copy;</div>
   </div>
 </div>
-

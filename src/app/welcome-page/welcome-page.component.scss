@@ -1,34 +1,76 @@
 @import '../../assets/index.scss';
-.container-fluid{
-    h2{
-        margin-bottom: 20px;
+.container-fluid {
+  position: relative;
+  min-height: 78vh;
+  a {
+    text-decoration: none;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  p {
+    margin-bottom: 5px;
+    font-size: 20px;
+    .inwedo-link {
+      &:hover {
+        color: $purple-color;
+      }
     }
-    p{
-        margin-bottom: 5px;
+  }
+  .links {
+    margin-top: 20px;
+    .link {
+      font-size: 20px;
+      height: 50px;
+      background: $purple-color linear-gradient(to right, $purple-color, $blue-color);
+      margin-bottom: 5px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      &:hover {
+        background: $blue-color linear-gradient(to right, $blue-color, $purple-color);
+      }
     }
-    .links{
-      margin-top: 20px;
-      .link{
-        font-size: 20px;
-        height: 50px;
-        background: $purple-color linear-gradient(to right, $purple-color, $blue-color);
-        margin-bottom: 5px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0px;
+    left: 15px;
+    right: 15px;
+    height: 70px;
+    border: 1px solid $blue-color;
+    .contact {
+      width: 100%;
+      text-align: right;
+      .phone-number,
+      .mail {
+        color: $blue-color;
+        font-size: 15px;
+      }
+      button {
+        padding: 0px;
+        border: none;
+        background-color: #ffffff;
+      }
+      i {
+        font-size: 30px;
+        margin-right: 10px;
         cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        color: #ffffff;
-        text-decoration: none;
-        text-align: center;
-        &:hover{
-          background: $blue-color linear-gradient(to right, $blue-color, $purple-color);
+        color: $blue-color;
+        &:hover {
+          color: $purple-color;
         }
       }
     }
-    .footer{
-      margin-top: 20px;
-      height: 70px;
-      background-color: $red-color;
+    .name {
+      text-align: center;
+      width: 100%;
+      color: $blue-color;
     }
+  }
 }
