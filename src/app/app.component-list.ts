@@ -4,7 +4,8 @@ import { HeaderComponent } from './header/header.component';
 // Http
 import {
   HttpWeatherComponent,
-  HttpMethodsComponent
+  HttpMethodsComponent,
+  CityItemComponent
  } from './http/index';
 
 // Shared
@@ -23,6 +24,7 @@ export const AppComponentList = [
   // Http
   HttpWeatherComponent,
   HttpMethodsComponent,
+  CityItemComponent,
 
   // Shared
   LoaderComponent,
