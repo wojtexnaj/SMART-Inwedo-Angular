@@ -20,7 +20,7 @@
         <div *ngFor="let cityName of cityNames" class="weather-box mb-4 d-flex flex-md-row flex-column justify-content-between">
           <div class="d-flex justify-content-center align-items-center temp-box">
             <div>
-              <div class="temp" [ngClass]="{ 'cold': cityName.temp <= 0, 'cool': cityName.temp > 0 && cityName.temp <= 15, 'warm': cityName.temp > 15 && cityName.temp < 25, 'hot': cityName.temp >= 25 }">{{cityName.temp}} &deg; C</div>
+              <div class="temp" [ngClass]="{ 'cold': cityName.main.temp <= 0, 'cool': cityName.main.temp > 0 && cityName.main.temp <= 15, 'warm': cityName.main.temp > 15 && cityName.main.temp < 25, 'hot': cityName.main.temp >= 25 }">{{cityName.main.temp}} &deg; C</div>
               <div class="description">{{ cityName.description }}</div>
             </div>
           </div>
@@ -41,6 +41,9 @@
       </div>
     </div>
 
+  </div>
+  <div class="city-item" *ngIf="false">
+    <city-item></city-item>
   </div>
   <div *ngIf="loading">
     <loader></loader>

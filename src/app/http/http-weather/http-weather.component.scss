@@ -1,5 +1,7 @@
 @import '../../../assets/index.scss';
 .container-fluid {
+  position: relative;
+  min-height: 100vh;
   .row {
     h2 {
       font-size: 1.4rem;
@@ -56,6 +58,13 @@
       font-size: 20px;
       white-space: nowrap;
     }
+  }
+  .city-item{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
   }
 }
 
