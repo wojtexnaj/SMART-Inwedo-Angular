@@ -70,6 +70,7 @@ export class HttpWeatherComponent implements OnInit {
         response.json().list
           .map((jsonData: any) => {
             this.cityNames.push(this.weatherService.mapJsonToCityWeather(jsonData));
+            console.log(this.cityNames);
           });
         this.clearInput();
         this.loading = false;

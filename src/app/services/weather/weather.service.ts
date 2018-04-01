@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { CityWeather, CityPosition } from '../../models';
+import { CityWeather, CityPosition, Main } from '../../models';
 // import { keyForOpenWeatherMap } from '../../shared/open-weather-map-key';
 
 @Injectable()
@@ -17,27 +17,41 @@ export class WeatherService {
   }
 
   mapJsonToCityWeather(jsonData: any): CityWeather {
-
     const cityWeather = new CityWeather();
 
     cityWeather.id = jsonData.id;
+    cityWeather.clouds = jsonData.clouds;
     cityWeather.name = jsonData.name;
+    cityWeather.rain = jsonData.rain;
+    cityWeather.snow = jsonData.snow;
     cityWeather.description = jsonData.weather[0].description;
     cityWeather.icon = jsonData.weather[0].icon;
     cityWeather.country = jsonData.sys.country;
-    cityWeather.temp = Math.round(jsonData.main.temp);
+    cityWeather.main = this.mapJsonToMain(jsonData.main);
     cityWeather.position = this.mapJsonToCityPosition(jsonData.coord);
 
     return cityWeather;
   }
 
   mapJsonToCityPosition(jsonData: any): CityPosition {
-
     const cityPosition = new CityPosition();
+
     cityPosition.latitude = Math.round(jsonData.lat);
     cityPosition.longitude = Math.round(jsonData.lon);
 
     return cityPosition;
+  }
+
+  mapJsonToMain(jsonData: any): Main {
+    const main = new Main();
+
+    main.humidity = jsonData.humidity;
+    main.pressure = jsonData.pressure;
+    main.temp = Math.round(jsonData.temp);
+    main.temp_max = jsonData.temp_max;
+    main.temp_min = jsonData.temp_min;
+
+    return main;
   }
 
 }
