@@ -16,6 +16,9 @@ import { HttpMethodsService } from './services/index';
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 
+// Angular Google Maps
+import { AgmCoreModule } from '@agm/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,11 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+     // Angular Google Maps
+  AgmCoreModule.forRoot({
+    apiKey: 'AIzaSyAvMC6HfUm6xR3NzfA3S5_sizHvQ2QO2ic'
+  }),
   ],
   providers: [
     // Services

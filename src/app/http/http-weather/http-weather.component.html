@@ -9,7 +9,7 @@
           <input class="form-control mr-2" [(ngModel)]="cityName" placeholder="Enter the city name." (focus)="cleanCityName()" [ngClass]="{ 'error': undesirableBehavior }">
           <i class="fa fa-times text-secondary" *ngIf="cityName.length > 0" (click)="clearInput()"></i>
         </div>
-        <button class="mt-2 btn btn-outline-secondary" (click)="showWeather()" [disabled]="cityName.length == 0 || cityName == cityNotFound || cityName == justYouSearchedForIt">Search city</button>
+        <button class="mt-2 btn btn-outline-secondary" (click)="showWeather()" [disabled]="cityName.length == 0 || cityName == infoToUser.cityNotFound || cityName == infoToUser.justYouSearchedForIt">Search city</button>
       </div>
     </div>
     <div class="col-6">
@@ -17,7 +17,7 @@
         <h2>Weather</h2>
       </div>
       <div *ngIf="cityNames.length > 0">
-        <div *ngFor="let cityName of cityNames" class="weather-box mb-4 d-flex flex-md-row flex-column justify-content-between">
+        <div *ngFor="let cityName of cityNames" class="weather-box mb-4 d-flex flex-md-row flex-column justify-content-between" (click)="openCityItem(cityName)">
           <div class="d-flex justify-content-center align-items-center temp-box">
             <div>
               <div class="temp" [ngClass]="{ 'cold': cityName.main.temp <= 0, 'cool': cityName.main.temp > 0 && cityName.main.temp <= 15, 'warm': cityName.main.temp > 15 && cityName.main.temp < 25, 'hot': cityName.main.temp >= 25 }">{{cityName.main.temp}} &deg; C</div>
@@ -31,8 +31,8 @@
             <div>{{ cityName.name }}</div>
             <div>Country: {{ cityName.country }}</div>
             <div>Position:
-              <br> latitude - {{ cityName.position.latitude }}
-              <br> longitude - {{ cityName.position.longitude }}</div>
+              <br> latitude : {{ cityName.position.latitude }}
+              <br> longitude : {{ cityName.position.longitude }}</div>
           </div>
         </div>
       </div>
@@ -42,8 +42,8 @@
     </div>
 
   </div>
-  <div class="city-item" *ngIf="false">
-    <city-item></city-item>
+  <div class="city-item" *ngIf="isCityItem">
+    <city-item [selectedCityWeather]="selectedCityWeather" (isCityItem)="closeCityItem($event)"></city-item>
   </div>
   <div *ngIf="loading">
     <loader></loader>

@@ -9,6 +9,8 @@ import { Response } from '@angular/http';
   styleUrls: ['./http-weather.component.scss']
 })
 export class HttpWeatherComponent implements OnInit {
+  selectedCityWeather: CityWeather;
+  isCityItem: boolean = false;
   cityName: string = '';
   cityNames: CityWeather[] = [];
   previousSearch: string = '';
@@ -117,5 +119,14 @@ export class HttpWeatherComponent implements OnInit {
       }
     }
     return true;
+  }
+
+  openCityItem(cityName: CityWeather) {
+    this.selectedCityWeather = cityName;
+    this.isCityItem  = true;
+  }
+
+  closeCityItem(event) {
+    this.isCityItem  = event;
   }
 }

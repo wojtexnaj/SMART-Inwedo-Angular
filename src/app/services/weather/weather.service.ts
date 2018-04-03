@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { CityWeather, CityPosition, Main } from '../../models';
+import { CityWeather, CityPosition, Main, Wind } from '../../models';
 // import { keyForOpenWeatherMap } from '../../shared/open-weather-map-key';
+import { Wind } from '../../models/cityWeather';
 
 @Injectable()
 export class WeatherService {
@@ -29,6 +30,7 @@ export class WeatherService {
     cityWeather.country = jsonData.sys.country;
     cityWeather.main = this.mapJsonToMain(jsonData.main);
     cityWeather.position = this.mapJsonToCityPosition(jsonData.coord);
+    cityWeather.wind = this.mapJsonToWind(jsonData.wind);
 
     return cityWeather;
   }
@@ -36,8 +38,8 @@ export class WeatherService {
   mapJsonToCityPosition(jsonData: any): CityPosition {
     const cityPosition = new CityPosition();
 
-    cityPosition.latitude = Math.round(jsonData.lat);
-    cityPosition.longitude = Math.round(jsonData.lon);
+    cityPosition.latitude = jsonData.lat;
+    cityPosition.longitude = jsonData.lon;
 
     return cityPosition;
   }
@@ -48,10 +50,19 @@ export class WeatherService {
     main.humidity = jsonData.humidity;
     main.pressure = jsonData.pressure;
     main.temp = Math.round(jsonData.temp);
-    main.temp_max = jsonData.temp_max;
-    main.temp_min = jsonData.temp_min;
+    main.tempMax = jsonData.temp_max;
+    main.tempMin = jsonData.temp_min;
 
     return main;
+  }
+
+  mapJsonToWind(jsonData: any): Wind {
+    const wind = new Wind();
+
+    wind.deg = jsonData.deg;
+    wind.speed = jsonData.speed;
+
+    return wind;
   }
 
 }
