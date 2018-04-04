@@ -10,25 +10,26 @@
               <img src="http://openweathermap.org/img/w/{{ selectedCityWeather.icon }}.png">
             </div>
         </div>
-        <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-row justify-content-center align-items-start">
           <div class="weather-info">
             <div>Temp: <span [ngClass]="classForNgClass(selectedCityWeather.main.temp)">{{ selectedCityWeather.main.temp }} &deg;C</span></div>
             <div>Temp-Max: <span [ngClass]="classForNgClass(selectedCityWeather.main.tempMax)">{{ selectedCityWeather.main.tempMax }} &deg;C</span></div>
             <div>Temp-Min: <span [ngClass]="classForNgClass(selectedCityWeather.main.tempMin)">{{ selectedCityWeather.main.tempMin }} &deg;C</span></div>
             <div>Pressure: {{ selectedCityWeather.main.pressure }} hPa</div>
             <div>Humidity: {{ selectedCityWeather.main.humidity }} %</div>
-            <div>Description: {{ selectedCityWeather.description }}</div>
             <div>Clouds: {{ selectedCityWeather.clouds.all }} %</div>
-            <div>Wind-speed: {{ selectedCityWeather.wind.speed }} km/h</div>
-            <div>Wind-deg: {{ selectedCityWeather.wind.deg }} &deg;</div>
+            <div>Wind: {{ selectedCityWeather.wind.speed }} km/h <i class="fa fa-location-arrow" [ngStyle]="{'transform': 'rotate(' + -45 + selectedCityWeather.wind.deg + 'deg)'}"></i></div>
+            <div>Description: {{ selectedCityWeather.description }}</div>
             <div *ngIf="selectedCityWeather.rain">Rain: {{ selectedCityWeather.rain }}</div>
             <div *ngIf="!selectedCityWeather.rain">Rain: -</div>
             <div *ngIf="selectedCityWeather.snow">Snow: {{ selectedCityWeather.snow }}</div>
             <div *ngIf="!selectedCityWeather.snow">Snow: -</div>
-
-
           </div>
-          <div class="place-info">elfclecmec</div>
+          <div class="place-info ml-5">
+            <div>Country: {{ selectedCityWeather.country }}</div>
+            <div>Latitude: {{ selectedCityWeather.position.latitude }}</div>
+            <div>Longitude: {{ selectedCityWeather.position.longitude }}</div>
+          </div>
         </div>
       </div>
   </div>

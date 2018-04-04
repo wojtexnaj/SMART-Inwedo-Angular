@@ -6,21 +6,25 @@
   .city-item-box{
     position: fixed;
     top: 175px;
-    left: 50px;
-    right: 50px;
+    left: 0px;
+    right: 0px;
     height: 450px;
     background-color: #ffffff;
     border: 2px solid $blue-color;
     agm-map {
       height: 100%;
-      width: 400px;
+      width: 200px;
     }
     .city-item-box-info{
       width: 100%;
       .city-name{
-        font-size: 60px;
+        font-size: 40px;
         font-weight: bold;
         text-align: center;
+      }
+      .weather-info, .place-info{
+        font-weight: bold;
+        font-size: 15px;
       }
     }
 
@@ -28,7 +32,68 @@
   .close{
     position: fixed;
     top: 180px;
-    right: 55px;
+    right: 5px;
     border: none;
+  }
+}
+@media (min-width: 540px) {
+  .container{
+    .city-item-box{
+    left: 25px;
+    right: 25px;
+    }
+    .close{
+      right: 30px;
+    }
+  }
+}
+@media (min-width: 720px) {
+  .container{
+    .city-item-box{
+      position: fixed;
+    top: 175px;
+    left: 50px;
+    right: 50px;
+    height: 450px;
+    background-color: #ffffff;
+    border: 2px solid $blue-color;
+      agm-map {
+        height: 100%;
+        width: 300px;
+      }
+      .city-item-box-info{
+        width: 100%;
+        .city-name{
+          font-size: 50px;
+          font-weight: bold;
+          text-align: center;
+        }
+        .weather-info, .place-info{
+          font-weight: bold;
+          font-size: 16px;
+        }
+      }
+    }
+    .close{
+      right: 55px;
+    }
+  }
+}
+
+@media (min-width: 960px) {
+  .container{
+    .city-item-box{
+      agm-map {
+        width: 400px;
+      }
+      .city-item-box-info{
+        .city-name{
+          font-size: 50px;
+        }
+        .weather-info, .place-info{
+          font-size: 20px;
+        }
+      }
+    }
   }
 }
