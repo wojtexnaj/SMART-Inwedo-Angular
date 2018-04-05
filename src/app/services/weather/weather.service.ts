@@ -3,7 +3,6 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { CityWeather, CityPosition, Main, Wind } from '../../models';
 // import { keyForOpenWeatherMap } from '../../shared/open-weather-map-key';
-import { Wind } from '../../models/cityWeather';
 
 @Injectable()
 export class WeatherService {

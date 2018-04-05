@@ -72,7 +72,6 @@ export class HttpWeatherComponent implements OnInit {
         response.json().list
           .map((jsonData: any) => {
             this.cityNames.push(this.weatherService.mapJsonToCityWeather(jsonData));
-            console.log(this.cityNames);
           });
         this.clearInput();
         this.loading = false;
@@ -119,6 +118,21 @@ export class HttpWeatherComponent implements OnInit {
       }
     }
     return true;
+  }
+
+  getClass(item: number) {
+    if (item <= 0) {
+      return 'cold';
+    }
+    if (item > 0 && item <= 15) {
+      return 'cool';
+    }
+    if (item > 15 || item < 25) {
+      return 'warm';
+    }
+    if (item >= 25) {
+      return 'hot';
+    }
   }
 
   openCityItem(cityName: CityWeather) {

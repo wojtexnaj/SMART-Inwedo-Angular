@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { CityWeather } from '../../../models';
 
 @Component({
@@ -9,6 +9,8 @@ import { CityWeather } from '../../../models';
 export class CityItemComponent implements OnInit {
   @Input() selectedCityWeather: CityWeather;
   @Output() isCityItem: EventEmitter<boolean> = new EventEmitter();
+  @ViewChild('agmMap') agmMap;
+  @ViewChild('flag') flag;
 
   constructor() { }
 
@@ -17,7 +19,7 @@ export class CityItemComponent implements OnInit {
   closeCityItem() {
     this.isCityItem.emit(false);
   }
-  classForNgClass(item: number) {
+  getClass(item: number) {
     if (item <= 0) {
       return 'cold';
     }
