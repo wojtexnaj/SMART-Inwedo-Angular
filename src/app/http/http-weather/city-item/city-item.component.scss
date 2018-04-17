@@ -9,13 +9,13 @@
     left: 0px;
     right: 0px;
     height: 450px;
-    background-color: #ffffff;
     border: 2px solid $blue-color;
     agm-map {
       height: 100%;
       width: 200px;
     }
     .city-item-box-info{
+      background-color: rgb(250, 248, 241);
       width: 100%;
       .city-name{
         font-size: 40px;
